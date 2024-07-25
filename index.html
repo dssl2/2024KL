@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOIZ BOIZ BOIZ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>KL BOYZ TRIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff4d4d;
-            --secondary-color: #333;
-            --text-color: #fff;
+            --primary-color: #9400d3;
+            --secondary-color: #301934;
+            --bg-color: #0F172A;
+            --surface-color: #1E293B;
+            --text-color: #E2E8F0;
+            --border-color: #334155;
+            --accent-color: #22D3EE;
         }
         * {
             margin: 0;
@@ -17,76 +21,130 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: #111;
+            background-color: var(--bg-color);
         }
         .container {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 20px;
-            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
         header {
-            grid-column: span 12;
             text-align: center;
-            padding: 100px 0;
-            background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07');
-            background-size: cover;
-            background-position: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin-bottom: 60px;
+            border-radius: 20px;
             position: relative;
+            overflow: hidden;
         }
         header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         header h1 {
             font-size: 4rem;
             margin-bottom: 20px;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
-            z-index: 1;
         }
-        header p {
-            font-size: 1.5rem;
+        .countdown {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #FFF;
+            background-color: rgba(0,0,0,0.3);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
             position: relative;
-            z-index: 1;
         }
-        .section {
-            grid-column: span 12;
-            background-color: var(--secondary-color);
-            padding: 40px;
-            border-radius: 10px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .grid-item {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+        }
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.3s ease;
         }
-        .section:hover {
-            transform: scale(1.02);
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+        .section {
+            margin-top: 60px;
+            padding: 40px;
+            background-color: var(--surface-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #FFF;
+            position: relative;
+            padding-bottom: 15px;
         }
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+            border-radius: 2px;
         }
         .highlight-item {
-            background-color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
             padding: 20px;
-            border-radius: 5px;
-            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .highlight-item:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
         }
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
+            margin-top: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .video-container iframe {
             position: absolute;
@@ -94,40 +152,55 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border-radius: 20px;
         }
-        #countdown {
-            font-size: 4rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        @media (min-width: 768px) {
-            .section {
-                grid-column: span 6;
-            }
-        }
-        img {
-            width: 90%;
-            height: 90%;
+        .squad-image {
+            width: 100%;
+            max-height: 900px;
             object-fit: cover;
-            position: absolute
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            header {
+                padding: 40px 0;
+                border-radius: 0;
+            }
+            header h1 {
+                font-size: 3rem;
+            }
+            .countdown {
+                font-size: 1.5rem;
+            }
+            .section {
+                padding: 30px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>7-DAY KUALA LUMPUR BOY TRIP</h1>
-        <p class="pulse">Only <span id="countdown">X</span> days until we take flight!</p>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>KL BOYZ TRIP</h1>
+            <p class="countdown">T-minus <span id="countdown">X</span> days</p>
+        </header>
+        
+        <section class="section">
+            <h2>HYPE VIDEOS</h2>
+            <div class="video-container"><iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/UpQigXbDdsU?si=qkF8HbLlfyQl9HtO&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/180XDZAU9Ug?si=VWasxCLrA78_8_O6&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+
+        </section>
+
+
         <section class="section">
             <h2>THE DESTINATION</h2>
             <p>Kuala Lumpur: Where ancient meets futuristic, street food rivals Michelin stars, and every corner holds a new adventure. Get ready to conquer this urban jungle with your crew!</p>
@@ -135,55 +208,44 @@
         
         <section class="section">
             <h2>EPIC HIGHLIGHTS</h2>
-            <div class="highlights">
-                <div class="highlight-item">Conquer the Petronas Towers</div>
-                <div class="highlight-item">Feast at Night Markets</div>
-                <div class="highlight-item">Explore Mystical Batu Caves</div>
-                <div class="highlight-item">Party in Malacca</div>
-                <div class="highlight-item">Genting Highlands</div>
-            </div>
+            <div class="highlight-item">Conquer the Petronas Towers</div>
+            <div class="highlight-item">Feast at Night Markets</div>
+            <div class="highlight-item">Explore Mystical Batu Caves</div>
+            <div class="highlight-item">Party in Malacca</div>
+            <div class="highlight-item">Genting Highlands</div>
         </section>
         
         <section class="section">
             <h2>THE SQUAD</h2>
             <p>Ten legends. Seven days. One epic journey. Are you ready to create stories you'll be telling for decades?</p>
-            <div class="video-container">
-                <img src="PIC2.jpg" alt="PIC">
-            </div>
+            <img src="PIC2.jpg" alt="Squad" class="squad-image">
         </section>
-
+       
         <section class="section">
-            <h2>&#128293;&#128293;&#128293;</h2>
-            <div class="video-container">
-                <!-- Replace the src URL with your actual video URL -->
-                <iframe width="560" height="315" src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <h2>OUR ITINERARY</h2>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width="100%" height="700" frameborder="0" style="border:0; border-radius: 20px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </section>
         
         <section class="section">
-
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width="100%" height="800"></iframe>
-
-        </section>         
-        
-        <section class="section">
-
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="800" onload="resizeIframe(this)"></iframe>
-
+            <h2>TRIP DETAILS</h2>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="700" frameborder="0" style="border-radius: 20px;"></iframe>
         </section>
-                                       
     </div>
 
+
+     <div class="grid">
+            <div class="grid-item"><img src="PIC2.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07" alt="KL Skyline"></div>
+        </div>
     <script>
         function updateCountdown() {
-            const tripDate = new Date("2024-11-24"); // Replace with your actual trip date
+            const tripDate = new Date("2024-11-24");
             const today = new Date();
             const diffTime = Math.abs(tripDate - today);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             document.getElementById("countdown").textContent = diffDays;
         }
 
-        // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
