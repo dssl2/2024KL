@@ -21,7 +21,27 @@
             padding: 0;
             background-color: var(--bg-color);
         }
+        .video-container {
+            height: 300px;
+            width: 300px;
+            position: relative;
+        }
         
+        .video-container video {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          object-fit: cover;
+          z-index: 0;
+        }
+        /* Just styling the content of the div, the *magic* in the previous rules */
+        .video-container .caption {
+          z-index: 1;
+          position: relative;
+          text-align: center;
+          color: #dc0000;
+          padding: 10px;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -109,24 +129,31 @@
     </script>
 </head>
 <body>
+    <!--
     <header>
         <div class="container">
             <h1>7 2024 KL Boys Tripr</h1>
         </div>
     </header>
-
+    -->
     <section class="hero">
-        <div class="hero-content">
-            <h2>Discover the Heart of Malaysia</h2>
+        <div class="video-container">
+            <video autoplay muted loop>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+            </video>
+            <h2>7 2024 KL Boys Tripr</h2>
             <p>Your ultimate week-long adventure in Kuala Lumpur</p>
         </div>
     </section>
         <main class="itinerary">
         <div class="container">
             <div class="day">
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width=100% height=800 onload="resizeIframe(this)></iframe>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width=100% height="800" onload="resizeIframe(this)></iframe>
             </div>
-
+                    
+            <div class="day">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width=100% height="800"></iframe>
+            </div>
 
             <!--
             <div class="day">
