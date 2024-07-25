@@ -3,62 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trip Agenda Planner</title>
+    <title>Wanderlust Adventures | Your Perfect Trip Agenda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            padding: 0 1rem;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-content {
+            background: rgba(0,0,0,0.6);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #ff5252;
+        }
+        .featured-trips {
+            padding: 4rem 0;
+        }
+        .trip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .trip-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .trip-card:hover {
+            transform: translateY(-5px);
+        }
+        .trip-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .trip-info {
+            padding: 1.5rem;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Trip Agenda Planner</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#create">Create Agenda</a></li>
-                <li><a href="#view">View Agendas</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <h1>Wanderlust Adventures</h1>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#trips">Trips</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section id="home">
-            <h2>Welcome to Trip Agenda Planner</h2>
-            <p>Plan your perfect trip with our easy-to-use agenda tool!</p>
-        </section>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Discover Your Next Adventure</h2>
+                <p>Expertly crafted trip agendas for unforgettable experiences</p>
+                <a href="#" class="btn">Explore Trips</a>
+            </div>
+        </div>
+    </section>
 
-        <section id="create">
-            <h2>Create New Agenda</h2>
-            <form>
-                <label for="trip-name">Trip Name:</label>
-                <input type="text" id="trip-name" name="trip-name" required>
-
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date" name="start-date" required>
-
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date" name="end-date" required>
-
-                <h3>Daily Activities</h3>
-                <div id="activities">
-                    <div class="activity">
-                        <input type="date" name="activity-date[]" required>
-                        <input type="text" name="activity-description[]" placeholder="Activity description" required>
-                        <button type="button" class="remove-activity">Remove</button>
+    <section class="featured-trips" id="trips">
+        <div class="container">
+            <h2>Featured Trip Agendas</h2>
+            <div class="trip-grid">
+                <div class="trip-card">
+                    <img src="https://source.unsplash.com/300x200/?bali" alt="Bali">
+                    <div class="trip-info">
+                        <h3>Bali Bliss</h3>
+                        <p>7 days of tropical paradise</p>
+                        <a href="#" class="btn">View Agenda</a>
                     </div>
                 </div>
-                <button type="button" id="add-activity">Add Activity</button>
-
-                <button type="submit">Save Agenda</button>
-            </form>
-        </section>
-
-        <section id="view">
-            <h2>Your Agendas</h2>
-            <ul id="agenda-list">
-                <!-- Agendas will be dynamically added here -->
-            </ul>
-        </section>
-    </main>
+                <div class="trip-card">
+                    <img src="https://source.unsplash.com/300x200/?japan" alt="Japan">
+                    <div class="trip-info">
+                        <h3>Japan Journey</h3>
+                        <p>10 days of culture and modernity</p>
+                        <a href="#" class="btn">View Agenda</a>
+                    </div>
+                </div>
+                <div class="trip-card">
+                    <img src="https://source.unsplash.com/300x200/?iceland" alt="Iceland">
+                    <div class="trip-info">
+                        <h3>Iceland Adventure</h3>
+                        <p>5 days in the land of fire and ice</p>
+                        <a href="#" class="btn">View Agenda</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Trip Agenda Planner. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Wanderlust Adventures. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
