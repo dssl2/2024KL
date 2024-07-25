@@ -111,6 +111,24 @@
             color: var(--secondary-color);
             margin-bottom: 5px;
         }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
         
         footer {
             background-color: var(--primary-color);
@@ -119,6 +137,7 @@
             padding: 20px 0;
             margin-top: 50px;
         }
+        
     </style>
     <script>
           function resizeIframe(obj) {
@@ -135,13 +154,13 @@
     </header>
     -->
     <section class="hero">
-        <iframe 
-          class="bg-video"
-          src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0"
-          frameBorder="0"
-          allowFullScreen
-          allow="autoplay"
-        />
+        <div class="video-container">
+            <iframe class="video-background" src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <div class="content">
+                <h1>Welcome to My Website</h1>
+                <p>This is a sample text overlaying the video background. You can add any content here.</p>
+            </div>
+        </div>
     </section>
         <main class="itinerary">
         <div class="container">
