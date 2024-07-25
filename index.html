@@ -3,100 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Days in Kuala Lumpur - Your Ultimate Itinerary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Boys Trip to Kuala Lumpur - Get Ready for Adventure!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #00a8cc;
-            --secondary-color: #ff6b6b;
-            --bg-color: #f7f7f7;
-            --text-color: #333;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: var(--primary-color);
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
             color: white;
-            padding: 20px 0;
-            text-align: center;
+            overflow-x: hidden;
         }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        
-        .hero {
-            background: url('https://source.unsplash.com/1600x900/?kuala-lumpur') no-repeat center center/cover;
-            height: 30vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
+
+        .video-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .itinerary {
-            padding: 50px 0;
-        }
-        
-        .day {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .day h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        
-        .activity {
-            margin-bottom: 20px;
-        }
-        
-        .activity h3 {
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
             overflow: hidden;
+            z-index: -1;
         }
 
         .video-background {
@@ -108,52 +34,117 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: -1;
         }
-        
-        footer {
-            background-color: var(--primary-color);
-            color: white;
+
+        .content {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            padding: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FFD700;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FFD700;
+            color: #000;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #FFA500;
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
             margin-top: 50px;
         }
-        
+
+        .feature {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+        }
+
+        .feature h3 {
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+            .feature {
+                flex-basis: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>7 Days in Kuala Lumpur</h1>
-            <h1>7 2024 KL Boys Tripr</h1>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Discover the Heart of Malaysia</h2>
-            <p>Your ultimate week-long adventure in Kuala Lumpur</p>
-        </div>
-    </section>
-    
-        <main class="itinerary">
-        <div class="container">
-            <div class="day">
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width=100% height="800"></iframe>
+    <div class="video-container">
+        <iframe class="video-background" src="https://player.vimeo.com/video/259411563?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div class="content">
+        <h1>Epic Boys Trip to Kuala Lumpur</h1>
+        <p>Get ready for the adventure of a lifetime in the heart of Malaysia! Join us for an unforgettable <span class="highlight">7-day boys trip</span> filled with excitement, culture, and brotherhood.</p>
+        <a href="#" class="cta-button">Count Me In!</a>
+        <div class="features">
+            <div class="feature">
+                <h3>Thrilling Nightlife</h3>
+                <p>Experience KL's vibrant nightlife scene and party till dawn!</p>
             </div>
-                    
-            <div class="day">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width=100% height="800"></iframe>
+            <div class="feature">
+                <h3>Extreme Sports</h3>
+                <p>Get your adrenaline pumping with exciting activities and adventures!</p>
             </div>
-            
-            
+            <div class="feature">
+                <h3>Cultural Immersion</h3>
+                <p>Dive into the rich Malaysian culture and create lasting memories!</p>
+            </div>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Kuala Lumpur Travel Guide. All rights reserved.</p>
-        </div>
-    </footer>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        var iframe = document.querySelector('iframe');
+        var player = new Vimeo.Player(iframe);
+
+        player.setVolume(0);
+
+        player.on('play', function() {
+            iframe.style.opacity = 1;
+        });
+    </script>
 </body>
 </html>
