@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KL BOYZ TRIP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>BOIZ BOIZ BOIZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #405DE6;
-            --secondary-color: #F56040;
-            --bg-color: #121212;
-            --surface-color: #1E1E1E;
-            --text-color: #E0E0E0;
-            --border-color: #2C2C2C;
+            --primary-color: #ff4d4d;
+            --secondary-color: #333;
+            --text-color: #fff;
         }
         * {
             margin: 0;
@@ -20,87 +17,76 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--bg-color);
+            background-color: #111;
         }
         .container {
-            width: 100%;
-            max-width: 935px;
-            margin: 0 auto;
-            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            padding: 20px;
         }
         header {
+            grid-column: span 12;
             text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #FFF;
-        }
-        .countdown {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3px;
-            margin-top: 20px;
-        }
-        .grid-item {
-            aspect-ratio: 1/1;
-            overflow: hidden;
+            padding: 100px 0;
+            background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07');
+            background-size: cover;
+            background-position: center;
             position: relative;
         }
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .grid-item::after {
+        header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
         }
-        .grid-item:hover::after {
-            opacity: 1;
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        header p {
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
         .section {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 3px;
+            grid-column: span 12;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.02);
         }
         h2 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #FFF;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
         .highlight-item {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 3px;
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
         }
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin-top: 20px;
         }
         .video-container iframe {
             position: absolute;
@@ -109,42 +95,39 @@
             width: 100%;
             height: 100%;
         }
-        @media (min-width: 614px) {
-            .grid {
-                gap: 15px;
+        #countdown {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @media (min-width: 768px) {
+            .section {
+                grid-column: span 6;
             }
         }
-        @media (max-width: 613px) {
-            .container {
-                padding: 0;
-            }
-            .grid {
-                gap: 1px;
-            }
-            .section {
-                border-left: none;
-                border-right: none;
-                border-radius: 0;
-            }
+        img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            position: absolute
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>KL BOYZ TRIP</h1>
-        <p class="countdown">Only <span id="countdown">X</span> days until takeoff!</p>
+        <h1>7-DAY KUALA LUMPUR BOY TRIP</h1>
+        <p class="pulse">Only <span id="countdown">X</span> days until we take flight!</p>
     </header>
     
     <div class="container">
-        <div class="grid">
-            <div class="grid-item"><img src="PIC2.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07" alt="KL Skyline"></div>
-            <div class="grid-item"><img src="https://source.unsplash.com/random/300x300?kualalumpur" alt="KL Random"></div>
-            <div class="grid-item"><img src="https://source.unsplash.com/random/300x300?petronas" alt="Petronas Towers"></div>
-            <div class="grid-item"><img src="https://source.unsplash.com/random/300x300?batucaves" alt="Batu Caves"></div>
-            <div class="grid-item"><img src="https://source.unsplash.com/random/300x300?nightmarket" alt="Night Market"></div>
-        </div>
-
         <section class="section">
             <h2>THE DESTINATION</h2>
             <p>Kuala Lumpur: Where ancient meets futuristic, street food rivals Michelin stars, and every corner holds a new adventure. Get ready to conquer this urban jungle with your crew!</p>
@@ -152,45 +135,55 @@
         
         <section class="section">
             <h2>EPIC HIGHLIGHTS</h2>
-            <div class="highlight-item">Conquer the Petronas Towers</div>
-            <div class="highlight-item">Feast at Night Markets</div>
-            <div class="highlight-item">Explore Mystical Batu Caves</div>
-            <div class="highlight-item">Party in Malacca</div>
-            <div class="highlight-item">Genting Highlands</div>
+            <div class="highlights">
+                <div class="highlight-item">Conquer the Petronas Towers</div>
+                <div class="highlight-item">Feast at Night Markets</div>
+                <div class="highlight-item">Explore Mystical Batu Caves</div>
+                <div class="highlight-item">Party in Malacca</div>
+                <div class="highlight-item">Genting Highlands</div>
+            </div>
         </section>
         
         <section class="section">
             <h2>THE SQUAD</h2>
             <p>Ten legends. Seven days. One epic journey. Are you ready to create stories you'll be telling for decades?</p>
+            <div class="video-container">
+                <img src="PIC2.jpg" alt="PIC">
+            </div>
         </section>
 
         <section class="section">
-            <h2>&#128293; HYPE VIDEO &#128293;</h2>
+            <h2>&#128293;&#128293;&#128293;</h2>
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <!-- Replace the src URL with your actual video URL -->
+                <iframe width="560" height="315" src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
         </section>
         
         <section class="section">
-            <h2>OUR ITINERARY</h2>
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </section>
+
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width="100%" height="800"></iframe>
+
+        </section>         
         
         <section class="section">
-            <h2>TRIP DETAILS</h2>
-            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="400" frameborder="0"></iframe>
+
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?gid=2084945952&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="800" onload="resizeIframe(this)"></iframe>
+
         </section>
+                                       
     </div>
 
     <script>
         function updateCountdown() {
-            const tripDate = new Date("2024-11-24");
+            const tripDate = new Date("2024-11-24"); // Replace with your actual trip date
             const today = new Date();
             const diffTime = Math.abs(tripDate - today);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             document.getElementById("countdown").textContent = diffDays;
         }
 
+        // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
