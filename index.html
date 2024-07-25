@@ -165,12 +165,13 @@
         </section>
                                        
     </div>
+
+</body>
     <script>
         const tripDate = new Date("2024-11-24"); // Replace with your actual trip date
         const today = new Date();
         const diffTime = Math.abs(tripDate - today);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         document.getElementById("countdown").textContent = diffDays;
-    </script>
-</body>
+    </script>                    
 </html>
