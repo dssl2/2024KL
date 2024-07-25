@@ -3,148 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boys Trip to Kuala Lumpur - Get Ready for Adventure!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Epic 7-Day Boys Trip to Kuala Lumpur</title>
     <style>
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            overflow-x: hidden;
+            background-color: #f4f4f4;
         }
-
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        section {
+            background-color: #fff;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #333;
+        }
         .video-container {
-            position: fixed;
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #FFD700;
-        }
-
-        p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-        }
-
-        .highlight {
-            color: #FFD700;
-            font-weight: 600;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #FFD700;
-            color: #000;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 600;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #FFA500;
-            transform: scale(1.05);
-        }
-
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-
-        .feature {
-            flex-basis: 30%;
-            margin-bottom: 30px;
-        }
-
-        .feature h3 {
-            color: #FFD700;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
-            }
-            .feature {
-                flex-basis: 100%;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <iframe class="video-background" src="https://player.vimeo.com/video/67471309?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-    <div class="content">
-        <h1>Epic Boys Trip to Kuala Lumpur</h1>
-        <p>Get ready for the adventure of a lifetime in the heart of Malaysia! Join us for an unforgettable <span class="highlight">7-day boys trip</span> filled with excitement, culture, and brotherhood.</p>
-        <a href="#" class="cta-button">Count Me In!</a>
-        <div class="features">
-            <div class="feature">
-                <h3>Thrilling Nightlife</h3>
-                <p>Experience KL's vibrant nightlife scene and party till dawn!</p>
+    <header>
+        <h1>Epic 7-Day Boys Trip to Kuala Lumpur</h1>
+        <p>Get ready for the adventure of a lifetime!</p>
+    </header>
+    
+    <main>
+        <section>
+            <h2>The Destination</h2>
+            <p>Kuala Lumpur: A vibrant metropolis where modern skyscrapers meet ancient temples, and street food rivals fine dining. Get ready to explore this amazing city with your best mates!</p>
+        </section>
+        
+        <section>
+            <h2>Highlights</h2>
+            <ul>
+                <li>Climb the iconic Petronas Towers</li>
+                <li>Experience the bustling night markets</li>
+                <li>Take a day trip to the Batu Caves</li>
+                <li>Party in the trendy Bukit Bintang district</li>
+                <li>Indulge in delicious Malaysian cuisine</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>The Squad</h2>
+            <p>Seven days, five best friends, one unforgettable journey. Are you ready to make memories that will last a lifetime?</p>
+        </section>
+        
+        <section>
+            <h2>Get Hyped!</h2>
+            <div class="video-container">
+                <!-- Replace the src URL with your actual video URL -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
-            <div class="feature">
-                <h3>Extreme Sports</h3>
-                <p>Get your adrenaline pumping with exciting activities and adventures!</p>
-            </div>
-            <div class="feature">
-                <h3>Cultural Immersion</h3>
-                <p>Dive into the rich Malaysian culture and create lasting memories!</p>
-            </div>
-        </div>
-    </div>
+        </section>
+        
+        <section>
+            <h2>Countdown</h2>
+            <p>Only <span id="countdown">X</span> days until we take off!</p>
+        </section>
+    </main>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        var iframe = document.querySelector('iframe');
-        var player = new Vimeo.Player(iframe);
-
-        player.setVolume(0);
-
-        player.on('play', function() {
-            iframe.style.opacity = 1;
-        });
+        // Add a simple countdown script
+        const tripDate = new Date("2024-08-01"); // Replace with your actual trip date
+        const today = new Date();
+        const diffTime = Math.abs(tripDate - today);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById("countdown").textContent = diffDays;
     </script>
 </body>
 </html>
