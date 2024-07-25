@@ -3,42 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epic 7-Day Boys Trip to Kuala Lumpur</title>
+    <title>EPIC 7-DAY KUALA LUMPUR ADVENTURE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary-color: #ff4d4d;
+            --secondary-color: #333;
+            --text-color: #fff;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #111;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
         header {
-            background-color: #333;
-            color: #fff;
+            grid-column: span 12;
             text-align: center;
-            padding: 1rem;
+            padding: 100px 0;
+            background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07');
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
         }
-        section {
-            background-color: #fff;
-            margin-bottom: 2rem;
-            padding: 1rem;
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            grid-column: span 12;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .highlight-item {
+            background-color: var(--primary-color);
+            padding: 20px;
             border-radius: 5px;
+            text-align: center;
         }
-        h1, h2 {
-            color: #333;
-        }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
-            padding-top: 30px;
             height: 0;
             overflow: hidden;
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -46,52 +109,73 @@
             width: 100%;
             height: 100%;
         }
+
+        #countdown {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                grid-column: span 6;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Epic 7-Day Boys Trip to Kuala Lumpur</h1>
-        <p>Get ready for the adventure of a lifetime!</p>
+        <h1>EPIC 7-DAY KUALA LUMPUR ADVENTURE</h1>
+        <p>Brace yourselves for the ultimate boys trip!</p>
     </header>
     
-    <main>
-        <section>
-            <h2>The Destination</h2>
-            <p>Kuala Lumpur: A vibrant metropolis where modern skyscrapers meet ancient temples, and street food rivals fine dining. Get ready to explore this amazing city with your best mates!</p>
+    <div class="container">
+        <section class="section">
+            <h2>THE DESTINATION</h2>
+            <p>Kuala Lumpur: Where ancient meets futuristic, street food rivals Michelin stars, and every corner holds a new adventure. Get ready to conquer this urban jungle with your crew!</p>
         </section>
         
-        <section>
-            <h2>Highlights</h2>
-            <ul>
-                <li>Climb the iconic Petronas Towers</li>
-                <li>Experience the bustling night markets</li>
-                <li>Take a day trip to the Batu Caves</li>
-                <li>Party in the trendy Bukit Bintang district</li>
-                <li>Indulge in delicious Malaysian cuisine</li>
-            </ul>
+        <section class="section">
+            <h2>EPIC HIGHLIGHTS</h2>
+            <div class="highlights">
+                <div class="highlight-item">Conquer the Petronas Towers</div>
+                <div class="highlight-item">Feast at Night Markets</div>
+                <div class="highlight-item">Explore Mystical Batu Caves</div>
+                <div class="highlight-item">Party in Bukit Bintang</div>
+                <div class="highlight-item">Devour Malaysian Cuisine</div>
+            </div>
         </section>
         
-        <section>
-            <h2>The Squad</h2>
-            <p>Seven days, five best friends, one unforgettable journey. Are you ready to make memories that will last a lifetime?</p>
+        <section class="section">
+            <h2>THE SQUAD</h2>
+            <p>Five legends. Seven days. One epic journey. Are you ready to create stories you'll be telling for decades?</p>
         </section>
         
-        <section>
-            <h2>Get Hyped!</h2>
+        <section class="section">
+            <h2>GET HYPED!</h2>
             <div class="video-container">
                 <!-- Replace the src URL with your actual video URL -->
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </section>
         
-        <section>
-            <h2>Countdown</h2>
-            <p>Only <span id="countdown">X</span> days until we take off!</p>
+        <section class="section">
+            <h2>COUNTDOWN TO LIFTOFF</h2>
+            <p class="pulse">Only <span id="countdown">X</span> days until we take flight!</p>
         </section>
-    </main>
+    </div>
 
     <script>
-        // Add a simple countdown script
         const tripDate = new Date("2024-08-01"); // Replace with your actual trip date
         const today = new Date();
         const diffTime = Math.abs(tripDate - today);
