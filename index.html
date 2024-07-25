@@ -3,165 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust Adventures | Your Perfect Trip Agenda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>7 Days in Kuala Lumpur - Your Ultimate Itinerary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #00a8cc;
+            --secondary-color: #ff6b6b;
+            --bg-color: #f7f7f7;
+            --text-color: #333;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: var(--bg-color);
         }
+        
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+        
         header {
-            background: #fff;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
         }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            padding: 0 1rem;
-        }
-        nav a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 600;
-        }
+        
         .hero {
-            background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
-            height: 60vh;
+            background: url('https://source.unsplash.com/1600x900/?kuala-lumpur') no-repeat center center/cover;
+            height: 50vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: #fff;
+            color: white;
+            position: relative;
         }
-        .hero-content {
-            background: rgba(0,0,0,0.6);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-        .btn {
-            display: inline-block;
-            background: #ff6b6b;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-        .btn:hover {
-            background: #ff5252;
-        }
-        .featured-trips {
-            padding: 4rem 0;
-        }
-        .trip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .trip-card {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .trip-card:hover {
-            transform: translateY(-5px);
-        }
-        .trip-card img {
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
         }
-        .trip-info {
-            padding: 1.5rem;
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
+        
+        .itinerary {
+            padding: 50px 0;
+        }
+        
+        .day {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .day h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .activity {
+            margin-bottom: 20px;
+        }
+        
+        .activity h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
         footer {
-            background: #333;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: white;
             text-align: center;
-            padding: 1rem 0;
+            padding: 20px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <nav>
-                <h1>Wanderlust Adventures</h1>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#trips">Trips</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <h1>7 Days in Kuala Lumpur</h1>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Discover Your Next Adventure</h2>
-                <p>Expertly crafted trip agendas for unforgettable experiences</p>
-                <a href="#" class="btn">Explore Trips</a>
-            </div>
+        <div class="hero-content">
+            <h2>Discover the Heart of Malaysia</h2>
+            <p>Your ultimate week-long adventure in Kuala Lumpur</p>
         </div>
     </section>
 
-    <section class="featured-trips" id="trips">
+    <main class="itinerary">
         <div class="container">
-            <h2>Featured Trip Agendas</h2>
-            <div class="trip-grid">
-                <div class="trip-card">
-                    <img src="https://source.unsplash.com/300x200/?bali" alt="Bali">
-                    <div class="trip-info">
-                        <h3>Bali Bliss</h3>
-                        <p>7 days of tropical paradise</p>
-                        <a href="#" class="btn">View Agenda</a>
-                    </div>
+            <div class="day">
+                <h2>Day 1: Arrival and City Center</h2>
+                <div class="activity">
+                    <h3>Morning: Arrive and Check-in</h3>
+                    <p>Arrive at Kuala Lumpur International Airport and transfer to your hotel in the city center.</p>
                 </div>
-                <div class="trip-card">
-                    <img src="https://source.unsplash.com/300x200/?japan" alt="Japan">
-                    <div class="trip-info">
-                        <h3>Japan Journey</h3>
-                        <p>10 days of culture and modernity</p>
-                        <a href="#" class="btn">View Agenda</a>
-                    </div>
+                <div class="activity">
+                    <h3>Afternoon: Merdeka Square</h3>
+                    <p>Visit Merdeka Square and admire the Sultan Abdul Samad Building.</p>
                 </div>
-                <div class="trip-card">
-                    <img src="https://source.unsplash.com/300x200/?iceland" alt="Iceland">
-                    <div class="trip-info">
-                        <h3>Iceland Adventure</h3>
-                        <p>5 days in the land of fire and ice</p>
-                        <a href="#" class="btn">View Agenda</a>
-                    </div>
+                <div class="activity">
+                    <h3>Evening: Jalan Alor Food Street</h3>
+                    <p>Enjoy dinner at the famous Jalan Alor Food Street, sampling local delicacies.</p>
+                </div>
+            </div>
+
+            <div class="day">
+                <h2>Day 2: Cultural Exploration</h2>
+                <div class="activity">
+                    <h3>Morning: Batu Caves</h3>
+                    <p>Visit the iconic Batu Caves and climb the colorful steps to the temple.</p>
+                </div>
+                <div class="activity">
+                    <h3>Afternoon: National Mosque and Islamic Arts Museum</h3>
+                    <p>Explore the National Mosque and the Islamic Arts Museum to learn about Malaysia's cultural heritage.</p>
+                </div>
+                <div class="activity">
+                    <h3>Evening: Petronas Towers</h3>
+                    <p>Visit the Petronas Towers and enjoy the skybridge experience for stunning city views.</p>
+                </div>
+            </div>
+
+            <!-- Add more days here following the same structure -->
+
+            <div class="day">
+                <h2>Day 7: Departure</h2>
+                <div class="activity">
+                    <h3>Morning: Last-Minute Shopping</h3>
+                    <p>Do some last-minute shopping at Central Market for souvenirs.</p>
+                </div>
+                <div class="activity">
+                    <h3>Afternoon: Departure</h3>
+                    <p>Check out from your hotel and transfer to the airport for your departure flight.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Wanderlust Adventures. All rights reserved.</p>
+            <p>&copy; 2024 Kuala Lumpur Travel Guide. All rights reserved.</p>
         </div>
     </footer>
 </body>
