@@ -21,26 +21,24 @@
             padding: 0;
             background-color: var(--bg-color);
         }
-        .video-container {
-            height: 300px;
-            width: 300px;
-            position: relative;
-        }
+        .bg-video {
+          position: fixed;
+          left: 0;
+          top: 0;
+          background-size: cover;
+          background: no-repeat center;
+          margin-left: 50vw;
+          user-select: none;
+          pointer-events: none;
         
-        .video-container video {
-          width: 100%;
+          /*custom styles, for example grayscale appearance*/
+          filter: grayscale(0.8);
+        
+          /*additional tweaks for positioning, read more in the link above*/
           height: 100%;
-          position: absolute;
-          object-fit: cover;
-          z-index: 0;
-        }
-        /* Just styling the content of the div, the *magic* in the previous rules */
-        .video-container .caption {
-          z-index: 1;
-          position: relative;
-          text-align: center;
-          color: #dc0000;
-          padding: 10px;
+          width: 177.77777778vh; /* 100 * 16 / 9 */
+          min-width: 100%;
+          min-height: 56.25vw; /* 100 * 9 / 16 */
         }
         .container {
             max-width: 1200px;
@@ -137,13 +135,13 @@
     </header>
     -->
     <section class="hero">
-        <div class="video-container">
-            <video autoplay muted loop>
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-            </video>
-            <h2>7 2024 KL Boys Tripr</h2>
-            <p>Your ultimate week-long adventure in Kuala Lumpur</p>
-        </div>
+        <iframe 
+          class="bg-video"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay"
+        />
     </section>
         <main class="itinerary">
         <div class="container">
