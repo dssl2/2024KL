@@ -203,63 +203,7 @@
         .pulse {
             animation: pulse 2s infinite;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-        .gallery-item {
-            position: relative;
-            aspect-ratio: 1;
-            overflow: hidden;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .gallery-item:hover .overlay {
-            opacity: 1;
-        }
-        .overlay-content {
-            color: white;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-        }
-        .overlay-content span {
-            margin: 0 10px;
-        }
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3px;
-            }
-            .container {
-                padding: 3px;
-            }
+
     </style>
 </head>
 <body>
@@ -271,11 +215,23 @@
 
    	    <h2 class="pulse"><p class="countdown">T-minus <span id="countdown">X</span> days</p></h2>      
 
-        <div class="gallery" id="gallery">
+        <div class="grid">
+            <div class="grid-item"><img src="PIC2.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="1.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="2.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="3.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="4.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="5.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="6.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="7.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="8.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="9.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="10.jpg" alt="Squad"></div>
+            <div class="grid-item"><img src="11.jpg" alt="Squad"></div>
         </div>
         
         <section class="section">
-            <h2>VIDZ</h2>
+            <h2>HISTORY</h2>
             <div class="video-container"><iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
             <div class="video-container"><iframe src="https://www.youtube.com/embed/UpQigXbDdsU?si=qkF8HbLlfyQl9HtO&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
             <div class="video-container"><iframe src="https://www.youtube.com/embed/180XDZAU9Ug?si=VWasxCLrA78_8_O6&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
@@ -334,60 +290,5 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
-    <script>
-        const images = [
-            { src: "Pic2.jpg", likes: 1234, comments: 56 },
-            { src: "1.jpg", likes: 1234, comments: 56 },
-            { src: "2.jpg", likes: 2468, comments: 135 },
-            { src: "3.jpg", likes: 1234, comments: 56 },
-            { src: "Pic2.jpg", likes: 1234, comments: 56 },
-            { src: "Pic2.jpg", likes: 2468, comments: 135 },
-            { src: "Pic2.jpg", likes: 1234, comments: 56 },
-            { src: "Pic2.jpg", likes: 1234, comments: 56 },
-            { src: "Pic2.jpg", likes: 2468, comments: 135 }
-            
-            <div class="grid-item"><img src="PIC2.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="1.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="2.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="3.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="4.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="5.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="6.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="7.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="8.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="9.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="10.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="11.jpg" alt="Squad"></div>
-            // Add more images as needed
-        ];
-
-        const gallery = document.getElementById('gallery');
-
-        images.forEach((image) => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `
-                <img src="${image.src}" alt="Gallery Image">
-                <div class="overlay">
-                    <div class="overlay-content">
-                        <span>
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                            </svg>
-                            ${image.likes}
-                        </span>
-                        <span>
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/>
-                            </svg>
-                            ${image.comments}
-                        </span>
-                    </div>
-                </div>
-            `;
-            gallery.appendChild(item);
-        });
-    </script>
-
 </body>
 </html>
