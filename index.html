@@ -3,293 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KL BOYZ TRIP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Fun Traveling in Ho Chi Minh City</title>
     <style>
-        :root {
-            --primary-color: #9400d3;
-            --secondary-color: #301934;
-            --bg-color: #0F172A;
-            --surface-color: #1E293B;
-            --text-color: #E2E8F0;
-            --border-color: #334155;
-            --accent-color: #22D3EE;
-        }
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }            
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .grid-item {
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            position: relative;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .grid-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-        }
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .grid-item:hover img {
-            transform: scale(1.1);
-        }
-        .section {
-            margin-top: 60px;
-            padding: 40px;
-            background-color: var(--surface-color);
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-      	.section:hover {
-            transform: scale(1.02);
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #FFF;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-        .highlight-item {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .highlight-item:hover {
-            transform: translateX(10px);
-            box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin-top: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-        }
-        .squad-image {
-            width: 100%;
-            max-height: 900px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-top: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            header {
-                padding: 40px 0;
-                border-radius: 0;
-            }
-            header h1 {
-                font-size: 3rem;
-            }
-            .countdown {
-                font-size: 1.5rem;
-            }
-            .section {
-                padding: 30px;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
+            color: #333;
+            background-color: #f5f5f5;
         }
         header {
-            text-align: center;
-            padding: 120px 0;
-            
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1573995974701-1af577c7de08?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            opacity: 1;
-            z-index: -1;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
         }
-        
-        header h1 {
-            font-size: 4rem;
+        h1 {
+            font-size: 3em;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
         }
-        header p {
-            font-size: 1.5rem;
-            position: relative;
-            z-index: 1;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        #countdown {
-            font-size: 4rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .intro {
+            text-align: center;
+            margin: 40px 0;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .activities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
         }
-        .pulse {
-            animation: pulse 2s infinite;
+        .activity {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
-
+        .activity:hover {
+            transform: translateY(-10px);
+        }
+        .activity img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .activity-content {
+            padding: 20px;
+        }
+        .activity h3 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .activity {
+                flex-basis: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>2024 KL BOYZ TRIP</h1>
+        <h1>Ho Chi Minh City Adventure</h1>
+        <p>Discover the vibrant energy and rich culture of Vietnam's largest city</p>
     </header>
-    
+
     <div class="container">
-
-   	<h2 class="pulse"><p class="countdown">Days since the last boys trip: <span id="countdown">X</span> </p></h2>      
-	<h2 class="pulse"><p class="countdown"><a href="https://photos.app.goo.gl/1KRzpviSHvEsgN2F7">KL PHOTOs</a></p></h2> 
-		
-        <div class="grid">
-            <div class="grid-item"><img src="PIC2.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="1.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="2.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="3.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="4.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="5.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="6.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="7.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="8.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="9.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="10.jpg" alt="Squad"></div>
-            <div class="grid-item"><img src="11.jpg" alt="Squad"></div>
-        </div>
-        
-        <section class="section">
-            <h2>HISTORY</h2>
-            <div class="video-container"><iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://www.youtube.com/embed/UpQigXbDdsU?si=qkF8HbLlfyQl9HtO&autoplay=1&loop=1&title=0&byline=0&portrait=0&mute=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-            <div class="video-container"><iframe src="https://www.youtube.com/embed/180XDZAU9Ug?si=VWasxCLrA78_8_O6&autoplay=1&loop=1&title=0&byline=0&portrait=0&mute=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-
+        <section class="intro">
+            <h2>Welcome to Saigon!</h2>
+            <p>Ho Chi Minh City, still commonly referred to as Saigon, is a dynamic metropolis that never sleeps. From its French colonial architecture to bustling street markets and vibrant nightlife, Saigon offers endless opportunities for fun and adventure.</p>
         </section>
 
+        <section class="activities">
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Street Food">
+                <div class="activity-content">
+                    <h3>Street Food Tour</h3>
+                    <p>Embark on a culinary adventure through Saigon's famous street food scene. Try pho, banh mi, fresh spring rolls, and more from local vendors. Don't miss the night markets for an authentic taste of Vietnam!</p>
+                    <p><strong>Must-try:</strong> Banh xeo (Vietnamese pancake) at Banh Xeo 46A</p>
+                </div>
+            </article>
 
-        <section class="section">
-            <h2>THE DESTINATION</h2>
-            <p>Kuala Lumpur: Where ancient meets futuristic, street food rivals Michelin stars, and every corner holds a new adventure. Get ready to conquer this urban jungle with your crew!</p>
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motorbike Tour">
+                <div class="activity-content">
+                    <h3>Motorbike City Tour</h3>
+                    <p>Experience Saigon like a local on the back of a motorbike. Zip through hidden alleyways, visit local markets, and see all the major landmarks with an expert guide.</p>
+                    <p><strong>Hot tip:</strong> Evening tours let you see the city lights and experience the cooler temperatures.</p>
+                </div>
+            </article>
+
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mekong Delta">
+                <div class="activity-content">
+                    <h3>Mekong Delta Day Trip</h3>
+                    <p>Escape the city for a day and explore the lush waterways of the Mekong Delta. Visit floating markets, sample tropical fruits, and learn about rural Vietnamese life.</p>
+                    <p><strong>Pro tip:</strong> Book a small group tour for a more personal experience.</p>
+                </div>
+            </article>
+
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1580522154071-c6ca47a859ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="War Remnants Museum">
+                <div class="activity-content">
+                    <h3>Historical Exploration</h3>
+                    <p>Dive into Vietnam's history at the War Remnants Museum, Reunification Palace, and Cu Chi Tunnels. These sites offer powerful insights into the country's past.</p>
+                    <p><strong>Note:</strong> Some exhibits can be quite graphic but are important to see.</p>
+                </div>
+            </article>
+
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1565895405221-53b4a8056b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rooftop Bar">
+                <div class="activity-content">
+                    <h3>Rooftop Bar Hopping</h3>
+                    <p>Saigon's skyline comes alive at night. Visit famous rooftop bars like Chill Skybar or Saigon Saigon for cocktails with breathtaking views of the city.</p>
+                    <p><strong>Dress code:</strong> Most upscale rooftop bars enforce a smart casual dress code.</p>
+                </div>
+            </article>
+
+            <article class="activity">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Local Markets">
+                <div class="activity-content">
+                    <h3>Market Shopping</h3>
+                    <p>Haggle for souvenirs at Ben Thanh Market or explore the less touristy Binh Tay Market in Chinatown. Find everything from silk scarves to Vietnamese coffee.</p>
+                    <p><strong>Bargaining tip:</strong> Start at about 50% of the asking price and meet in the middle.</p>
+                </div>
+            </article>
         </section>
-        
-        <section class="section">
-            <h2>BOOK REVIEW</h2>
-			<div class="grid">
-				<div class="grid-item"><img src="/Pic/BookXcess.jpg" alt="/Pic/BookXcess.jpg"></div>
-				<div class="grid-item"><img src="/Pic/DurianWonderland.jpg" alt="/Pic/DurianWonderland.jpg"></div>
-				<div class="grid-item"><img src="/Pic/LuluHypermarket.jpg" alt="/Pic/LuluHypermarket.jpg"></div>
-				<div class="grid-item"><img src="/Pic/MAMEE.jpg" alt="/Pic/MAMEE.jpg"></div>
-				<div class="grid-item"><img src="/Pic/NightMarkets.jpg" alt="/Pic/NightMarkets.jpg"></div>
-				<div class="grid-item"><img src="/Pic/Pintassan Saloma Bridge.jpg" alt="/Pic/Pintassan Saloma Bridge.jpg"></div>
-				<div class="grid-item"><img src="/Pic/souvenirs.jpg" alt="/Pic/souvenirs.jpg"></div>
-				<div class="grid-item"><img src="/Pic/SS2.jpg" alt="/Pic/SS2.jpg"></div>
-				<div class="grid-item"><img src="/Pic/TinyTaipei.jpg" alt="/Pic/TinyTaipei.jpg"></div>
-			</div>
+
+        <section class="tips">
+            <h2>Travel Tips for Ho Chi Minh City</h2>
+            <ul>
+                <li><strong>Best time to visit:</strong> December to April (dry season)</li>
+                <li><strong>Getting around:</strong> Grab (Southeast Asia's Uber) is affordable and reliable</li>
+                <li><strong>Currency:</strong> Vietnamese Dong (VND) - carry small bills for street vendors</li>
+                <li><strong>Crossing streets:</strong> Walk slowly and steadily - motorbikes will flow around you</li>
+                <li><strong>Local etiquette:</strong> Dress modestly when visiting temples and pagodas</li>
+            </ul>
         </section>
-              
-        <section class="section">
-            <h2>LOCATIONS</h2>
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=19de6ev9RXf-aCA4WnkXnjiJIAJt5lPY&ehbc=2E312F" width="100%" height="700" frameborder="0" style="border:0; border-radius: 20px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </section>
-        	
-        <section class="section">
-            <h2>TRIP DETAILS</h2>
-            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaLCYUzBJB_3KM5j1S_mRATpEiwBHGWA-VpK14qlMxcOcoknHG3xE-aPOhEJ6Y8PnQaBC11jwW122R/pubhtml?widget=true&amp;headers=false" width="100%" height="700" frameborder="0" style="border-radius: 20px;"></iframe>
-        </section>       
-		
-        <section class="section">
-            <a class="weatherwidget-io" href="https://forecast7.com/en/3d14101d69/kuala-lumpur/" data-label_1="KUALA LUMPUR" data-label_2="WEATHER" data-theme="original" >KUALA LUMPUR WEATHER</a>
-            <script>
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-            </script>
-        </section>
-        
     </div>
 
-    <script>
-        function updateCountdown() {
-            const tripDate = new Date("2024-11-24");
-            const today = new Date();
-            const diffTime = Math.abs(tripDate - today);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            document.getElementById("countdown").textContent = diffDays;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+    <footer>
+        <p>&copy; 2023 Ho Chi Minh City Travel Guide | Created for fun travelers</p>
+        <p>Contact: info@hcmctravelfun.com</p>
+    </footer>
 </body>
 </html>
