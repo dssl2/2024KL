@@ -200,6 +200,173 @@
             display: block;
         }
         
+        /* Carousel Section */
+        .carousel-section {
+            padding: 70px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-item iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-control {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .carousel-control:hover {
+            background-color: var(--primary);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            gap: 10px;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 20;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px 15px;
+            border-radius: 30px;
+            align-items: center;
+        }
+        
+        .video-control-btn {
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: transparent;
+        }
+        
+        .video-control-btn:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .video-progress {
+            flex-grow: 1;
+            height: 4px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .video-progress-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .video-time {
+            color: white;
+            font-size: 0.8rem;
+            min-width: 60px;
+            text-align: center;
+        }
+        
         /* History Section */
         .history-section {
             padding: 70px 5%;
@@ -587,6 +754,11 @@
             .video-container iframe {
                 height: 400px;
             }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 400px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -639,6 +811,28 @@
             .video-grid {
                 grid-template-columns: 1fr;
             }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 300px;
+            }
+
+            .video-controls {
+                bottom: 70px;
+                padding: 8px 12px;
+                gap: 10px;
+            }
+
+            .video-control-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .video-time {
+                font-size: 0.7rem;
+                min-width: 50px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -672,6 +866,43 @@
             .itinerary-day {
                 padding: 25px;
             }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 220px;
+            }
+
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .video-controls {
+                bottom: 60px;
+                padding: 6px 10px;
+                gap: 8px;
+            }
+
+            .video-control-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .video-progress {
+                height: 3px;
+                margin: 0 5px;
+            }
+
+            .video-time {
+                font-size: 0.6rem;
+                min-width: 40px;
+            }
         }
     </style>
 </head>
@@ -697,13 +928,63 @@
     
     <!-- Hero Section -->
     <section class="hero">
-	<div class="hero-content">
-		<h1 class="hero-title">RISE AND GRIND</h1>
-        	<div class="video-container">
-            		<iframe width="560" height="315" src="https://www.youtube.com/embed/IdTMDpizis8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        	</div>	
-	</div>	    
+        <div class="hero-content">
+            <h1 class="hero-title">RISE AND GRIND</h1>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IdTMDpizis8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>    
+        </div>        
     </section>
+
+    <!-- Photo/Video Carousel Section -->
+    <section class="carousel-section">
+        <div class="section-header">
+            <h1 class="hero-title">Previously....</h1>
+        </div>
+        
+        <div class="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <!-- Item 1 - Video -->
+                <div class="carousel-item">ex17PERuNh4
+                    <iframe src="https://www.youtube.com/embed/ex17PERuNh4?si=VWasxCLrA78_8_O6&enablejsapi=1&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>KL</h3>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/180XDZAU9Ug?si=VWasxCLrA78_8_O6&enablejsapi=1&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>Phuket</h3>
+                    </div>
+                </div>         
+
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/UpQigXbDdsU?si=qkF8HbLlfyQl9HtO&enablejsapi=1&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>TW</h3>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                     <iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>HK</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-control" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-control" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="carousel-indicators" id="indicators">
+                <!-- Indicators will be added by JavaScript -->
+            </div>
+        </div>
+    </section>
+
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Ho Chi Minh City</h1>
@@ -782,20 +1063,20 @@ Anh đang cố hôn môi em thật sự (ừ, ừ).  <br>Its happening pho realz
                 </div>
             </div>
             <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/PzsCQ152FRg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/PzsCQ152FRg" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="video-info">
                     <h3 class="video-title">Vietnam on the Rise</h3>
                     <p class="video-description">The economy of Vietnam has been an absolute rocket ship over the past few years.</p>
                 </div>
             </div>
-			<div class="video-card">
+            <div class="video-card">
                 <iframe src="https://www.youtube.com/embed/e2L-GfcUgmM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="video-info">
                     <h3 class="video-title">Vietnam History</h3>
                     <p class="video-description">History without words</p>
                 </div>
             </div>
-			<div class="video-card">
+            <div class="video-card">
                 <iframe src="https://www.youtube.com/embed/gcdSuAd7j8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="video-info">
                     <h3 class="video-title">Ho Chi Minh</h3>
@@ -968,6 +1249,440 @@ Anh đang cố hôn môi em thật sự (ừ, ừ).  <br>Its happening pho realz
                 document.getElementById(dayId).classList.add('active');
             });
         });
+
+        // Enhanced Carousel functionality with video controls
+        const carouselInner = document.getElementById('carouselInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicatorsContainer = document.getElementById('indicators');
+        const items = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        let autoSlide;
+        let observer;
+        let currentVideoElement = null;
+        let isDraggingProgress = false;
+
+        // Create indicators
+        items.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('carousel-indicator');
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            indicatorsContainer.appendChild(indicator);
+        });
+
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        function updateCarousel() {
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+            
+            // Update video controls for the current slide
+            updateVideoControls();
+        }
+
+        function goToSlide(index) {
+            // Pause current video if it exists
+            if (currentVideoElement) {
+                pauseCurrentVideo();
+            }
+            
+            currentIndex = index;
+            updateCarousel();
+            
+            // Play new video if it exists
+            playCurrentVideo();
+        }
+
+        function pauseCurrentVideo() {
+            if (!currentVideoElement) return;
+            
+            if (currentVideoElement.tagName === 'VIDEO') {
+                currentVideoElement.pause();
+                const controls = items[currentIndex].querySelector('.video-controls');
+                if (controls) {
+                    const playPauseBtn = controls.querySelector('.video-control-btn:nth-child(2)');
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            } else if (currentVideoElement.contentWindow) {
+                try {
+                    currentVideoElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                } catch (e) {
+                    console.log("Couldn't pause video:", e);
+                }
+            }
+            currentVideoElement = null;
+        }
+
+        function playCurrentVideo() {
+            const currentItem = items[currentIndex];
+            currentVideoElement = currentItem.querySelector('video, iframe');
+            
+            if (currentVideoElement) {
+                if (currentVideoElement.tagName === 'VIDEO') {
+                    currentVideoElement.play().catch(e => console.log("Autoplay prevented:", e));
+                    const controls = currentItem.querySelector('.video-controls');
+                    if (controls) {
+                        const playPauseBtn = controls.querySelector('.video-control-btn:nth-child(2)');
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }
+                } else if (currentVideoElement.contentWindow) {
+                    try {
+                        currentVideoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    } catch (e) {
+                        console.log("Couldn't play video:", e);
+                    }
+                }
+            }
+        }
+
+        function nextSlide() {
+            goToSlide((currentIndex + 1) % items.length);
+        }
+
+        function prevSlide() {
+            goToSlide((currentIndex - 1 + items.length) % items.length);
+        }
+
+        function startAutoPlay() {
+            if (!autoSlide) {
+                autoSlide = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoSlide);
+            autoSlide = null;
+        }
+
+        // Initialize Intersection Observer
+        function initObserver() {
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Carousel is visible - start autoplay
+                        startAutoPlay();
+                        playCurrentVideo();
+                    } else {
+                        // Carousel is not visible - stop autoplay and pause video
+                        stopAutoPlay();
+                        pauseCurrentVideo();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(document.querySelector('.carousel'));
+        }
+
+        // Add video controls to each video item
+        function addVideoControls() {
+            items.forEach(item => {
+                const video = item.querySelector('video, iframe');
+                if (video) {
+                    const controlsContainer = document.createElement('div');
+                    controlsContainer.className = 'video-controls';
+                    
+                    // Rewind button
+                    const rewindBtn = document.createElement('button');
+                    rewindBtn.innerHTML = '<i class="fas fa-backward"></i>';
+                    rewindBtn.className = 'video-control-btn';
+                    rewindBtn.title = 'Rewind 10 seconds';
+                    rewindBtn.addEventListener('click', () => handleVideoControl('rewind'));
+                    
+                    // Play/Pause button
+                    const playPauseBtn = document.createElement('button');
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playPauseBtn.className = 'video-control-btn';
+                    playPauseBtn.title = 'Play/Pause';
+                    playPauseBtn.addEventListener('click', () => handleVideoControl('playpause'));
+                    
+                    // Progress bar
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'video-progress';
+                    const progressFilled = document.createElement('div');
+                    progressFilled.className = 'video-progress-filled';
+                    progressContainer.appendChild(progressFilled);
+                    
+                    // Progress bar event listeners
+                    progressContainer.addEventListener('mousedown', startDrag);
+                    progressContainer.addEventListener('touchstart', startDrag);
+                    
+                    // Current time display
+                    const timeDisplay = document.createElement('div');
+                    timeDisplay.className = 'video-time';
+                    timeDisplay.textContent = '0:00 / 0:00';
+                    
+                    // Fast forward button
+                    const ffBtn = document.createElement('button');
+                    ffBtn.innerHTML = '<i class="fas fa-forward"></i>';
+                    ffBtn.className = 'video-control-btn';
+                    ffBtn.title = 'Fast forward 10 seconds';
+                    ffBtn.addEventListener('click', () => handleVideoControl('fastforward'));
+                    
+                    controlsContainer.appendChild(rewindBtn);
+                    controlsContainer.appendChild(playPauseBtn);
+                    controlsContainer.appendChild(progressContainer);
+                    controlsContainer.appendChild(timeDisplay);
+                    controlsContainer.appendChild(ffBtn);
+                    
+                    item.appendChild(controlsContainer);
+                }
+            });
+        }
+
+        function startDrag(e) {
+            isDraggingProgress = true;
+            updateProgressBar(e);
+            
+            document.addEventListener('mousemove', updateProgressBar);
+            document.addEventListener('touchmove', updateProgressBar);
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
+        }
+
+        function updateProgressBar(e) {
+            if (!isDraggingProgress) return;
+            
+            const progressContainer = e.target.closest('.video-progress');
+            if (!progressContainer) return;
+            
+            const rect = progressContainer.getBoundingClientRect();
+            const pos = (e.clientX || e.touches[0].clientX) - rect.left;
+            let percent = Math.min(Math.max(0, pos / rect.width), 1);
+            
+            const currentItem = items[currentIndex];
+            const video = currentItem.querySelector('video, iframe');
+            const progressFilled = progressContainer.querySelector('.video-progress-filled');
+            
+            if (video) {
+                if (video.tagName === 'VIDEO') {
+                    video.currentTime = percent * video.duration;
+                } else if (video.contentWindow) {
+                    try {
+                        if (video.src.includes('youtube.com')) {
+                            video.contentWindow.postMessage(`{"event":"command","func":"seekTo","args":[${percent * (video.duration || 300)}, true]}`, '*');
+                        } else if (video.src.includes('vimeo.com')) {
+                            new Vimeo.Player(video).setCurrentTime(percent * (video.duration || 300));
+                        }
+                    } catch (e) {
+                        console.log("Couldn't seek video:", e);
+                    }
+                }
+                progressFilled.style.width = `${percent * 100}%`;
+                updateTimeDisplay(video);
+            }
+        }
+
+        function endDrag() {
+            isDraggingProgress = false;
+            document.removeEventListener('mousemove', updateProgressBar);
+            document.removeEventListener('touchmove', updateProgressBar);
+            document.removeEventListener('mouseup', endDrag);
+            document.removeEventListener('touchend', endDrag);
+        }
+
+        function updateVideoControls() {
+            const currentItem = items[currentIndex];
+            const video = currentItem.querySelector('video, iframe');
+            const controls = currentItem.querySelector('.video-controls');
+            
+            if (!video || !controls) return;
+            
+            // Update play/pause button based on video state
+            const playPauseBtn = controls.querySelector('.video-control-btn:nth-child(2)');
+            
+            if (video.tagName === 'VIDEO') {
+                playPauseBtn.innerHTML = video.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            }
+            
+            // Start updating time display
+            updateTimeDisplay(video);
+            
+            // Set up timeupdate event for HTML5 video
+            if (video.tagName === 'VIDEO') {
+                video.ontimeupdate = function() {
+                    updateTimeDisplay(video);
+                };
+            }
+        }
+
+        function updateTimeDisplay(video) {
+            const currentItem = items[currentIndex];
+            const controls = currentItem.querySelector('.video-controls');
+            if (!controls) return;
+            
+            const timeDisplay = controls.querySelector('.video-time');
+            const progressFilled = controls.querySelector('.video-progress-filled');
+            
+            if (video.tagName === 'VIDEO') {
+                const currentTime = formatTime(video.currentTime);
+                const duration = formatTime(video.duration || 0);
+                timeDisplay.textContent = `${currentTime} / ${duration}`;
+                
+                if (video.duration) {
+                    const percent = (video.currentTime / video.duration) * 100;
+                    progressFilled.style.width = `${percent}%`;
+                }
+            } else {
+                // For iframes, we can't get precise timing, so just show placeholder
+                timeDisplay.textContent = '0:00 / 0:00';
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function handleVideoControl(action) {
+            const currentItem = items[currentIndex];
+            const video = currentItem.querySelector('video, iframe');
+            const controls = currentItem.querySelector('.video-controls');
+            const playPauseBtn = controls?.querySelector('.video-control-btn:nth-child(2)');
+            
+            if (!video) return;
+            
+            if (video.tagName === 'VIDEO') {
+                // Handle HTML5 video element
+                switch (action) {
+                    case 'rewind':
+                        video.currentTime = Math.max(0, video.currentTime - 10);
+                        break;
+                    case 'fastforward':
+                        video.currentTime = Math.min(video.duration, video.currentTime + 10);
+                        break;
+                    case 'playpause':
+                        if (video.paused) {
+                            video.play();
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        } else {
+                            video.pause();
+                            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        }
+                        break;
+                }
+                updateTimeDisplay(video);
+            } else if (video.contentWindow) {
+                // Handle embedded videos (YouTube/Vimeo)
+                try {
+                    if (video.src.includes('youtube.com')) {
+                        // YouTube API
+                        switch (action) {
+                            case 'rewind':
+                                video.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[0, true]}', '*');
+                                break;
+                            case 'fastforward':
+                                video.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[0, true]}', '*');
+                                break;
+                            case 'playpause':
+                                video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                                break;
+                        }
+                    } else if (video.src.includes('vimeo.com')) {
+                        // Vimeo API
+                        const player = new Vimeo.Player(video);
+                        switch (action) {
+                            case 'rewind':
+                                player.getCurrentTime().then(seconds => {
+                                    player.setCurrentTime(Math.max(0, seconds - 10));
+                                });
+                                break;
+                            case 'fastforward':
+                                player.getCurrentTime().then(seconds => {
+                                    player.setCurrentTime(seconds + 10);
+                                });
+                                break;
+                            case 'playpause':
+                                player.getPaused().then(paused => {
+                                    if (paused) {
+                                        player.play();
+                                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                                    } else {
+                                        player.pause();
+                                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                                    }
+                                });
+                                break;
+                        }
+                    }
+                } catch (e) {
+                    console.log("Couldn't control video:", e);
+                }
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            initObserver();
+            addVideoControls();
+            
+            // Event listeners for navigation
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                if (autoSlide) {
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                if (autoSlide) {
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            });
+
+            // Pause on hover
+            carousel.addEventListener('mouseenter', () => {
+                stopAutoPlay();
+                const currentItem = items[currentIndex];
+                const video = currentItem.querySelector('video, iframe');
+                if (video && video.tagName === 'VIDEO' && !video.paused) {
+                    video.pause();
+                    const controls = currentItem.querySelector('.video-controls');
+                    if (controls) {
+                        const playPauseBtn = controls.querySelector('.video-control-btn:nth-child(2)');
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                if (document.querySelector('.carousel').getBoundingClientRect().top < window.innerHeight * 0.5) {
+                    startAutoPlay();
+                    const currentItem = items[currentIndex];
+                    const video = currentItem.querySelector('video, iframe');
+                    if (video && video.tagName === 'VIDEO' && video.paused) {
+                        video.play().catch(e => console.log("Autoplay prevented:", e));
+                        const controls = currentItem.querySelector('.video-controls');
+                        if (controls) {
+                            const playPauseBtn = controls.querySelector('.video-control-btn:nth-child(2)');
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Add Vimeo player API if needed
+        if (document.querySelector('iframe[src*="vimeo.com"]')) {
+            const script = document.createElement('script');
+            script.src = 'https://player.vimeo.com/api/player.js';
+            document.body.appendChild(script);
+        }
     </script>
 </body>
 </html>
