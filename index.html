@@ -846,34 +846,32 @@
             <div class="carousel-inner" id="carouselInner">
                 <!-- Item 1 - Video -->
                 <div class="carousel-item">
-                    <iframe src="https://www.youtube.com/embed/ex17PERuNh4?si=qkF8HbLlfyQl9HtO&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+                    <iframe id="video-0" src="https://www.youtube.com/embed/ex17PERuNh4?enablejsapi=1&autoplay=1&loop=1&playlist=ex17PERuNh4&title=0&byline=0&portrait=0&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="carousel-caption">
                         <h3>KL</h3>
                     </div>
                 </div>
 				
                 <div class="carousel-item">
-                    <iframe src="https://www.youtube.com/embed/180XDZAU9Ug?si=VWasxCLrA78_8_O6&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+                    <iframe id="video-1" src="https://www.youtube.com/embed/180XDZAU9Ug?enablejsapi=1&autoplay=0&loop=1&playlist=180XDZAU9Ug&title=0&byline=0&portrait=0&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="carousel-caption">
                         <h3>Phuket</h3>
                     </div>
                 </div>         
 
                 <div class="carousel-item">
-                    <iframe src="https://www.youtube.com/embed/UpQigXbDdsU?si=qkF8HbLlfyQl9HtO&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+                    <iframe id="video-2" src="https://www.youtube.com/embed/UpQigXbDdsU?enablejsapi=1&autoplay=0&loop=1&playlist=UpQigXbDdsU&title=0&byline=0&portrait=0&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="carousel-caption">
                         <h3>TW</h3>
                     </div>
                 </div>
                 
-
                 <div class="carousel-item">
-                     <iframe src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>>
+                    <iframe id="video-3" src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=0&loop=1&title=0&byline=0&portrait=0&muted=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="carousel-caption">
                         <h3>HK</h3>
                     </div>
-                </div>                <!-- Item 4 - Image (replace with actual image URL) -->
-
+                </div>
             </div>
             
             <div class="carousel-controls">
@@ -1071,8 +1069,7 @@ Anh đang cố hôn môi em thật sự (ừ, ừ).  <br>Its happening pho realz
                 </div>
             </div>
             
-            <!-- Days 3-7 would follow the same pattern -->
-            <!-- Content abbreviated for this example -->
+            <!-- Additional days would be added here -->
             
         </div>
     </section>
@@ -1124,144 +1121,224 @@ Anh đang cố hôn môi em thật sự (ừ, ừ).  <br>Its happening pho realz
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Tab functionality for itinerary
-        document.querySelectorAll('.itinerary-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.itinerary-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.itinerary-day').forEach(d => d.classList.remove('active'));
-                
-                tab.classList.add('active');
-                const dayId = tab.getAttribute('data-day');
-                document.getElementById(dayId).classList.add('active');
-            });
-        });
+	<script>
+		// Mobile menu toggle
+		const menuToggle = document.getElementById('menuToggle');
+		const navLinks = document.getElementById('navLinks');
+		
+		menuToggle.addEventListener('click', () => {
+			navLinks.classList.toggle('active');
+		});
+		
+		// Close menu when a link is clicked
+		document.querySelectorAll('.nav-link').forEach(link => {
+			link.addEventListener('click', () => {
+				navLinks.classList.remove('active');
+			});
+		});
+		
+		// Tab functionality for itinerary
+		document.querySelectorAll('.itinerary-tab').forEach(tab => {
+			tab.addEventListener('click', () => {
+				document.querySelectorAll('.itinerary-tab').forEach(t => t.classList.remove('active'));
+				document.querySelectorAll('.itinerary-day').forEach(d => d.classList.remove('active'));
+				
+				tab.classList.add('active');
+				const dayId = tab.getAttribute('data-day');
+				document.getElementById(dayId).classList.add('active');
+			});
+		});
 
-    // Carousel functionality with auto-play when visible
-    const carouselInner = document.getElementById('carouselInner');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const indicatorsContainer = document.getElementById('indicators');
-    const items = document.querySelectorAll('.carousel-item');
-    let currentIndex = 0;
-    let autoSlide;
-    let observer;
+		// Enhanced Carousel functionality with video control
+		const carouselInner = document.getElementById('carouselInner');
+		const prevBtn = document.getElementById('prevBtn');
+		const nextBtn = document.getElementById('nextBtn');
+		const indicatorsContainer = document.getElementById('indicators');
+		const items = document.querySelectorAll('.carousel-item');
+		const carousel = document.querySelector('.carousel');
+		let currentIndex = 0;
+		let autoSlideInterval;
+		let observer;
 
-    // Create indicators
-    items.forEach((_, index) => {
-        const indicator = document.createElement('div');
-        indicator.classList.add('carousel-indicator');
-        if (index === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => {
-            goToSlide(index);
-        });
-        indicatorsContainer.appendChild(indicator);
-    });
+		// Create indicators
+		items.forEach((_, index) => {
+			const indicator = document.createElement('div');
+			indicator.classList.add('carousel-indicator');
+			if (index === 0) indicator.classList.add('active');
+			indicator.addEventListener('click', () => {
+				goToSlide(index);
+			});
+			indicatorsContainer.appendChild(indicator);
+		});
 
-    const indicators = document.querySelectorAll('.carousel-indicator');
+		const indicators = document.querySelectorAll('.carousel-indicator');
 
-    function updateCarousel() {
-        carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        // Update indicators
-        indicators.forEach((indicator, index) => {
-            if (index === currentIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
-    }
+		// Video control functions
+		function playVideo(index) {
+			const video = document.getElementById(`video-${index}`);
+			if (video) {
+				// For YouTube videos
+				if (video.src.includes('youtube.com')) {
+					video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+				}
+				// For Vimeo videos
+				else if (video.src.includes('vimeo.com')) {
+					video.contentWindow.postMessage('{"method":"play"}', '*');
+				}
+			}
+		}
 
-    function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-    }
+		function pauseVideo(index) {
+			const video = document.getElementById(`video-${index}`);
+			if (video) {
+				// For YouTube videos
+				if (video.src.includes('youtube.com')) {
+					video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+				}
+				// For Vimeo videos
+				else if (video.src.includes('vimeo.com')) {
+					video.contentWindow.postMessage('{"method":"pause"}', '*');
+				}
+			}
+		}
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % items.length;
-        updateCarousel();
-    }
+		function pauseAllVideos() {
+			items.forEach((_, index) => {
+				pauseVideo(index);
+			});
+		}
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
-        updateCarousel();
-    }
+		function updateCarousel() {
+			carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+			
+			// Update indicators
+			indicators.forEach((indicator, index) => {
+				if (index === currentIndex) {
+					indicator.classList.add('active');
+				} else {
+					indicator.classList.remove('active');
+				}
+			});
 
-    function startAutoPlay() {
-        if (!autoSlide) {
-            autoSlide = setInterval(nextSlide, 93000); // Change slide every 3 seconds
-        }
-    }
+			// Control video playback
+			pauseAllVideos();
+			setTimeout(() => {
+				playVideo(currentIndex);
+			}, 500); // Wait for transition to complete
+		}
 
-    function stopAutoPlay() {
-        clearInterval(autoSlide);
-        autoSlide = null;
-    }
+		function goToSlide(index) {
+			currentIndex = index;
+			updateCarousel();
+		}
 
-    // Initialize Intersection Observer to detect when carousel is visible
-    function initObserver() {
-        observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Carousel is visible - start autoplay
-                    startAutoPlay();
-                    
-                    // Also restart autoplay when mouse leaves (if it was paused)
-                    carousel.addEventListener('mouseleave', startAutoPlay);
-                } else {
-                    // Carousel is not visible - stop autoplay
-                    stopAutoPlay();
-                    
-                    // Remove mouseleave event listener
-                    carousel.removeEventListener('mouseleave', startAutoPlay);
-                }
-            });
-        }, { threshold: 0.5 }); // Trigger when 50% of carousel is visible
+		function nextSlide() {
+			currentIndex = (currentIndex + 1) % items.length;
+			updateCarousel();
+		}
 
-        observer.observe(carousel);
-    }
+		function prevSlide() {
+			currentIndex = (currentIndex - 1 + items.length) % items.length;
+			updateCarousel();
+		}
 
-    // Event listeners
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        // Reset autoplay timer after manual navigation
-        if (autoSlide) {
-            stopAutoPlay();
-            startAutoPlay();
-        }
-    });
+		function startAutoPlay() {
+			if (!autoSlideInterval) {
+				autoSlideInterval = setInterval(nextSlide, 8000); // Change slide every 8 seconds to allow videos to play
+			}
+		}
 
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        // Reset autoplay timer after manual navigation
-        if (autoSlide) {
-            stopAutoPlay();
-            startAutoPlay();
-        }
-    });
+		function stopAutoPlay() {
+			clearInterval(autoSlideInterval);
+			autoSlideInterval = null;
+		}
 
-    // Pause on hover
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    
-    // Initialize the observer when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initObserver);
-    </script>
+		// Initialize Intersection Observer to detect when carousel is visible
+		function initObserver() {
+			observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Carousel is visible - start autoplay and play current video
+						startAutoPlay();
+						playVideo(currentIndex);
+					} else {
+						// Carousel is not visible - stop autoplay and pause all videos
+						stopAutoPlay();
+						pauseAllVideos();
+					}
+				});
+			}, { 
+				threshold: 0.3, // Trigger when 30% of carousel is visible
+				rootMargin: '0px' 
+			});
+
+			observer.observe(carousel);
+		}
+
+		// Event listeners
+		nextBtn.addEventListener('click', () => {
+			nextSlide();
+			resetAutoPlay();
+		});
+
+		prevBtn.addEventListener('click', () => {
+			prevSlide();
+			resetAutoPlay();
+		});
+
+		function resetAutoPlay() {
+			// Reset autoplay timer after manual navigation
+			stopAutoPlay();
+			// Check if carousel is still visible before restarting
+			const rect = carousel.getBoundingClientRect();
+			const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+			if (isVisible) {
+				startAutoPlay();
+			}
+		}
+
+		// Pause on hover and resume on leave
+		carousel.addEventListener('mouseenter', () => {
+			stopAutoPlay();
+			pauseAllVideos();
+		});
+		
+		carousel.addEventListener('mouseleave', () => {
+			const rect = carousel.getBoundingClientRect();
+			const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+			if (isVisible) {
+				startAutoPlay();
+				playVideo(currentIndex);
+			}
+		});
+		
+		// Initialize everything when DOM is loaded
+		document.addEventListener('DOMContentLoaded', () => {
+			initObserver();
+			// Start with first video playing if carousel is visible
+			setTimeout(() => {
+				const rect = carousel.getBoundingClientRect();
+				const isVisible = rect.top < window.innerHeight * 0.7;
+				if (isVisible) {
+					playVideo(0);
+				}
+			}, 1000); // Wait for page to fully load
+		});
+
+		// Handle page visibility changes
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden) {
+				stopAutoPlay();
+				pauseAllVideos();
+			} else {
+				const rect = carousel.getBoundingClientRect();
+				const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+				if (isVisible) {
+					startAutoPlay();
+					playVideo(currentIndex);
+				}
+			}
+		});
+	</script>
 </body>
 </html>
