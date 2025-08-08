@@ -894,34 +894,180 @@
 			scroll-snap-align: center;
 		}
 
-		@media (max-width: 768px) {
-			.itinerary-tabs {
-				justify-content: start;
-				padding-bottom: 10px;
-			}
-			
-			.tab {
-				padding: 10px 15px;
-				font-size: 0.8rem;
-			}
-		}
+@media (max-width: 768px) {
+    /* Improved mobile navigation */
+    nav {
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 70%;
+    }
+    
+    .menu-toggle {
+        padding: 6px 10px;
+        font-size: 1.2rem;
+        z-index: 1001;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 8, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backdrop-filter: blur(10px);
+        gap: 25px;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .mobile-icon {
+        display: inline-block;
+        width: 24px;
+        text-align: center;
+    }
+    
+    .nav-text {
+        display: inline-block;
+    }
+    
+    /* Body padding to account for fixed nav */
+    body {
+        padding-top: 60px;
+    }
+    
+    /* Improved hero section */
+    .hero-content {
+        padding-top: 20px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin: 20px 0;
+    }
+    
+    /* Better button sizing */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Improved carousel */
+    .carousel-controls {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px;
+    }
+    
+    /* Better itinerary tabs */
+    .itinerary-tabs {
+        gap: 8px;
+        padding-bottom: 15px;
+    }
+    
+    .tab {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .itinerary-day {
+        padding: 20px 15px;
+    }
+    
+    .day-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Footer adjustments */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .video-container iframe,
+    .carousel-item iframe {
+        height: 200px;
+    }
+    
+    .video-card iframe {
+        height: 180px;
+    }
+    
+    .itinerary-tabs {
+        gap: 5px;
+    }
+    
+    .tab {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+    }
+}
 </style>
 </head>
 <body><div class="scanner-line"></div>
-<!-- Navigation -->
+<!-- Update the nav section in the HTML -->
 <nav>
     <div class="container">
         <a href="#" class="logo glitch neon-glow" data-text="___________">
             <i class="fas fa-cube"></i> CHONG-Q ZONE
         </a>
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars" id="menuIcon"></i>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#history">DataBank</a></li>
-            <li><a href="#videos">BDs</a></li>
-            <li><a href="#itinerary">Op Schedule</a></li>
-            <li><a href="/KL2024Index.html">KL '24</a></li>
+            <li><a href="#history"><i class="fas fa-database mobile-icon"></i><span class="nav-text">DataBank</span></a></li>
+            <li><a href="#videos"><i class="fas fa-play mobile-icon"></i><span class="nav-text">BDs</span></a></li>
+            <li><a href="#itinerary"><i class="fas fa-calendar-alt mobile-icon"></i><span class="nav-text">Op Schedule</span></a></li>
+            <li><a href="/KL2024Index.html"><i class="fas fa-map-marked-alt mobile-icon"></i><span class="nav-text">KL '24</span></a></li>
         </ul>
     </div>
 </nav>
@@ -1172,13 +1318,39 @@
     </div>
 </footer>
 <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+// Update the mobile menu toggle functionality
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+const menuIcon = document.getElementById('menuIcon');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
     
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    // Change icon based on state
+    if (navLinks.classList.contains('active')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+    } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+        document.body.classList.remove('no-scroll');
     });
+});
+
+// Add this to your CSS for the no-scroll class
+.no-scroll {
+    overflow: hidden;
+}
     
     // Tab functionality for itinerary
     document.querySelectorAll('.tab').forEach(tab => {
