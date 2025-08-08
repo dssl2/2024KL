@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Saigon 2026 | LFG2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #857BEF;
+            --dark: #0F0F1B;
+            --darker: #0A0A12;
+            --gray: #A6A6B8;
+            --light-gray: #252536;
+            --white: #F5F5FA;
+            --accent: #00CEC9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--white);
+            line-height: 1.6;
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        }
+        
+        /* Modern Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 15, 27, 0.95);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            padding: 6px 0;
+        }
+        
+        .nav-link:hover {
+            color: var(--white);
+        }
+        
+        .nav-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-cta:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 100px 5% 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .hero-cta-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .primary-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .primary-cta:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+        
+        .secondary-cta {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .secondary-cta:hover {
+            background-color: rgba(108, 92, 231, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Carousel Section */
+        .carousel-section {
+            padding: 70px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-item iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-control {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .carousel-control:hover {
+            background-color: var(--primary);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            gap: 10px;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* History Section */
+        .history-section {
+            padding: 70px 5%;
+            background-color: var(--darker);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+        
+        .section-subtitle {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: clamp(0.95rem, 2vw, 1rem);
+            padding: 0 5%;
+        }
+        
+        .history-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .history-text {
+            flex: 1;
+        }
+        
+        .history-text p {
+            margin-bottom: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: clamp(0.95rem, 2vw, 1rem);
+        }
+        
+        .video-container {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+        
+        /* Video Showcase */
+        .video-showcase {
+            padding: 70px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            background-color: var(--light-gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 18px;
+            background-color: var(--light-gray);
+        }
+        
+        .video-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .video-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Itinerary Section */
+        .itinerary-section {
+            padding: 70px 5%;
+            background-color: var(--darker);
+        }
+        
+        .itinerary-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .itinerary-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+        
+        .itinerary-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .itinerary-tab {
+            padding: 10px 18px;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        
+        .itinerary-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .itinerary-tab:hover:not(.active) {
+            background-color: var(--darker);
+        }
+        
+        .itinerary-day {
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .itinerary-day.active {
+            display: block;
+        }
+        
+        .day-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+        
+        .day-subtitle {
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .itinerary-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .itinerary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .item-time {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 70px;
+            font-size: 0.95rem;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .item-description {
+            color: var(--gray);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .item-tip {
+            background-color: var(--darker);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--white);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .item-tip i {
+            color: var(--accent);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 70px 5%;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .cta-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.125rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px 5% 30px;
+            background-color: var(--darker);
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .footer-column h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 5% 50px;
+            }
+            
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .history-content {
+                flex-direction: column;
+            }
+            
+            .video-container iframe {
+                height: 400px;
+            }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-link {
+                padding: 12px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 70px 5% 40px;
+            }
+            
+            .hero-cta-container {
+                justify-content: center;
+            }
+            
+            .video-container iframe {
+                height: 300px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 5% 30px;
+            }
+            
+            .hero-cta-container {
+                flex-direction: column;
+            }
+            
+            .primary-cta, .secondary-cta {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .video-container iframe {
+                height: 220px;
+            }
+            
+            .itinerary-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .item-time {
+                margin-bottom: 5px;
+            }
+            
+            .itinerary-day {
+                padding: 25px;
+            }
+
+            .carousel-item iframe,
+            .carousel-item img {
+                height: 220px;
+            }
+
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-map-marked-alt logo-icon"></i>
+            Saigon 2026
+        </a>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="#history" class="nav-link">History</a>
+            <a href="#videos" class="nav-link">Videos</a>
+            <a href="#itinerary" class="nav-link">Itinerary</a>
+            <a href="#food" class="nav-link">Food Guide</a>
+            <a href="/KL2024Index.html" class="nav-link">KL2024</a>
+            <a href="https://calbee88.quickconnect.to/mo/sharing/ODhZCffDV" class="nav-link">KL2024 Photos</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">RISE AND GRIND</h1>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IdTMDpizis8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>    
+        </div>        
+    </section>
+
+    <!-- Photo/Video Carousel Section -->
+    <section class="carousel-section">
+        <div class="section-header">
+            <h1 class="hero-title">Previously....</h1>
+        </div>
+        
+        <div class="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <!-- Item 1 - Video -->
+                <div class="carousel-item">
+                    <iframe id="video-0" src="https://player.vimeo.com/video/1105605849?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>KL</h3>
+                    </div>
+                </div>
+				
+                <div class="carousel-item">
+                    <iframe id="video-1" src="https://www.youtube.com/embed/180XDZAU9Ug?enablejsapi=1&autoplay=0&loop=1&playlist=180XDZAU9Ug&title=0&byline=0&portrait=0&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>Phuket</h3>
+                    </div>
+                </div>         
+
+                <div class="carousel-item">
+                    <iframe id="video-2" src="https://www.youtube.com/embed/UpQigXbDdsU?enablejsapi=1&autoplay=0&loop=1&playlist=UpQigXbDdsU&title=0&byline=0&portrait=0&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>TW</h3>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <iframe id="video-3" src="https://player.vimeo.com/video/67471309?h=c2a5e96c4e&autoplay=0&loop=1&title=0&byline=0&portrait=0&muted=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-caption">
+                        <h3>HK</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-control" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-control" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="carousel-indicators" id="indicators">
+                <!-- Indicators will be added by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Ho Chi Minh City</h1>
+            <p class="hero-subtitle">
+                Some call it Ho Chi Minh City, some call it Saigon, I call it BoysTrip 2026.  apt apt Hôn môi, hôn môi gửi đến điện thoại của em, nhưng
+Anh đang cố hôn môi em thật sự (ừ, ừ).  <br>Its happening pho realz so get your đồng ready!</br>
+            </p>
+            <div class="hero-cta-container">
+                <a href="#itinerary" class="primary-cta">
+                    <i class="fas fa-route"></i> Start Exploring
+                </a>
+                <a href="#videos" class="secondary-cta">
+                    <i class="fas fa-play"></i> Youtube Hype Videos
+                </a>
+            </div>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QzegCBrJ83o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="history-section" id="history">
+        <div class="section-header">
+            <h2 class="section-title">The Story of Saigon</h2>
+            <p class="section-subtitle">
+                From its humble beginnings to the vibrant metropolis it is today
+            </p>
+        </div>
+        <div class="history-content">
+            <div class="history-text">
+                <p>
+                    Ho Chi Minh City, still affectionately known as Saigon, is a city with a rich and complex history. 
+                    Originally a small fishing village inhabited by Khmer people, the area was conquered by the Vietnamese 
+                    in the 17th century and grew into an important trading port.
+                </p>
+                <p>
+                    Under French colonial rule from the mid-19th century, Saigon became known as the "Pearl of the Far East" 
+                    for its beautiful architecture and cosmopolitan culture. The city was the capital of South Vietnam during 
+                    the Vietnam War and witnessed some of the conflict's most pivotal moments, including the fall of Saigon 
+                    in 1975 when it was renamed Ho Chi Minh City.
+                </p>
+                <p>
+                    Today, the city is Vietnam's economic powerhouse, where gleaming skyscrapers stand alongside colonial-era 
+                    buildings and ancient pagodas. This fascinating blend of old and new makes Ho Chi Minh City one of Southeast 
+                    Asia's most captivating destinations.
+                </p>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/MJscH6klFwQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Showcase -->
+    <section class="video-showcase" id="videos">
+        <div class="section-header">
+            <h2 class="section-title">Saigon Through the Lens</h2>
+            <p class="section-subtitle">
+                Get inspired by these captivating videos of Ho Chi Minh City
+            </p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/2iw_K-1AmVk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3 class="video-title">48 Hours in Ho Chi Minh City</h3>
+                    <p class="video-description">A whirlwind tour of Saigon's must-see attractions and hidden gems</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/mzSxHe-hRho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3 class="video-title">Ho Chi Train</h3>
+                    <p class="video-description">A journey of about 1,700 kilometers. In Vietnam, the "Reunification Express" train travels from Hanoi to Ho Chi Minh City.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/PzsCQ152FRg" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3 class="video-title">Vietnam on the Rise</h3>
+                    <p class="video-description">The economy of Vietnam has been an absolute rocket ship over the past few years.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/e2L-GfcUgmM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3 class="video-title">Vietnam History</h3>
+                    <p class="video-description">History without words</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/gcdSuAd7j8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3 class="video-title">Ho Chi Minh</h3>
+                    <p class="video-description">Ho Chi Minh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Itinerary Section -->
+    <section class="itinerary-section" id="itinerary">
+        <div class="section-header">
+            <h2 class="section-title">7-Day Saigon Adventure</h2>
+            <p class="section-subtitle">
+                Our carefully crafted itinerary shows you the best of Ho Chi Minh City
+            </p>
+        </div>
+        <div class="itinerary-container">
+            <div class="itinerary-tabs">
+                <div class="itinerary-tab active" data-day="day1">Day 1: Arrival</div>
+                <div class="itinerary-tab" data-day="day2">Day 2: History</div>
+                <div class="itinerary-tab" data-day="day3">Day 3: Culture</div>
+                <div class="itinerary-tab" data-day="day4">Day 4: Food</div>
+                <div class="itinerary-tab" data-day="day5">Day 5: Day Trip</div>
+                <div class="itinerary-tab" data-day="day6">Day 6: Modern Saigon</div>
+                <div class="itinerary-tab" data-day="day7">Day 7: Departure</div>
+            </div>
+            
+            <!-- Day 1 -->
+            <div class="itinerary-day active" id="day1">
+                <h3 class="day-title">Day 1: Arrival & First Impressions</h3>
+                <p class="day-subtitle">Ease into Saigon's rhythm and explore your surroundings</p>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4 class="item-title">Arrival & Hotel Check-in</h4>
+                        <p class="item-description">Settle into your accommodation in District 1, the heart of the city. Recommended areas: around Nguyen Hue Walking Street or Dong Khoi Street.</p>
+                        <div class="item-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Try to book a hotel with a rooftop pool to enjoy Saigon's skyline from above</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Evening</div>
+                    <div class="item-content">
+                        <h4 class="item-title">Sunset at Bitexco Sky Deck</h4>
+                        <p class="item-description">Head to the 49th floor observation deck of Bitexco Financial Tower for panoramic views of the city as the sun sets.</p>
+                    </div>
+                </div>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Night</div>
+                    <div class="item-content">
+                        <h4 class="item-title">Dinner at Secret Garden</h4>
+                        <p class="item-description">Enjoy authentic Vietnamese cuisine in this charming rooftop restaurant hidden down an alleyway.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2 -->
+            <div class="itinerary-day" id="day2">
+                <h3 class="day-title">Day 2: Historical Saigon</h3>
+                <p class="day-subtitle">Discover the city's complex past and wartime history</p>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4 class="item-title">War Remnants Museum</h4>
+                        <p class="item-description">A sobering but essential visit to understand Vietnam's wartime experience from a local perspective.</p>
+                    </div>
+                </div>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Midday</div>
+                    <div class="item-content">
+                        <h4 class="item-title">Reunification Palace</h4>
+                        <p class="item-description">Explore this perfectly preserved 1960s government building where the Vietnam War officially ended.</p>
+                    </div>
+                </div>
+                
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4 class="item-title">Notre-Dame Cathedral & Central Post Office</h4>
+                        <p class="item-description">Admire these beautiful examples of French colonial architecture in the heart of the city.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional days would be added here -->
+            
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Ho Ma Beer 2026
+                </div>
+                <p class="footer-description">
+                    DO WHAT YOU NEED TO DO
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Itineraries</a></li>
+                    <li><a href="#">Food Guide</a></li>
+                    <li><a href="#">Cultural Tips</a></li>
+                    <li><a href="#">Travel Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Travel Tips</a></li>
+                    <li><a href="#">Packing List</a></li>
+                    <li><a href="#">Phrase Guide</a></li>
+                    <li><a href="#">Transport Guide</a></li>
+                    <li><a href="#">Safety Info</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 DannyInc. All rights reserved. | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+	<script>
+		// Mobile menu toggle
+		const menuToggle = document.getElementById('menuToggle');
+		const navLinks = document.getElementById('navLinks');
+		
+		menuToggle.addEventListener('click', () => {
+			navLinks.classList.toggle('active');
+		});
+		
+		// Close menu when a link is clicked
+		document.querySelectorAll('.nav-link').forEach(link => {
+			link.addEventListener('click', () => {
+				navLinks.classList.remove('active');
+			});
+		});
+		
+		// Tab functionality for itinerary
+		document.querySelectorAll('.itinerary-tab').forEach(tab => {
+			tab.addEventListener('click', () => {
+				document.querySelectorAll('.itinerary-tab').forEach(t => t.classList.remove('active'));
+				document.querySelectorAll('.itinerary-day').forEach(d => d.classList.remove('active'));
+				
+				tab.classList.add('active');
+				const dayId = tab.getAttribute('data-day');
+				document.getElementById(dayId).classList.add('active');
+			});
+		});
+
+		// Enhanced Carousel functionality with video control
+		const carouselInner = document.getElementById('carouselInner');
+		const prevBtn = document.getElementById('prevBtn');
+		const nextBtn = document.getElementById('nextBtn');
+		const indicatorsContainer = document.getElementById('indicators');
+		const items = document.querySelectorAll('.carousel-item');
+		const carousel = document.querySelector('.carousel');
+		let currentIndex = 0;
+		let autoSlideInterval;
+		let observer;
+
+		// Create indicators
+		items.forEach((_, index) => {
+			const indicator = document.createElement('div');
+			indicator.classList.add('carousel-indicator');
+			if (index === 0) indicator.classList.add('active');
+			indicator.addEventListener('click', () => {
+				goToSlide(index);
+			});
+			indicatorsContainer.appendChild(indicator);
+		});
+
+		const indicators = document.querySelectorAll('.carousel-indicator');
+
+		// Video control functions
+		function playVideo(index) {
+			const video = document.getElementById(`video-${index}`);
+			if (video) {
+				// For YouTube videos
+				if (video.src.includes('youtube.com')) {
+					video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+				}
+				// For Vimeo videos
+				else if (video.src.includes('vimeo.com')) {
+					video.contentWindow.postMessage('{"method":"play"}', '*');
+				}
+			}
+		}
+
+		function pauseVideo(index) {
+			const video = document.getElementById(`video-${index}`);
+			if (video) {
+				// For YouTube videos
+				if (video.src.includes('youtube.com')) {
+					video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+				}
+				// For Vimeo videos
+				else if (video.src.includes('vimeo.com')) {
+					video.contentWindow.postMessage('{"method":"pause"}', '*');
+				}
+			}
+		}
+
+		function pauseAllVideos() {
+			items.forEach((_, index) => {
+				pauseVideo(index);
+			});
+		}
+
+		function updateCarousel() {
+			carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+			
+			// Update indicators
+			indicators.forEach((indicator, index) => {
+				if (index === currentIndex) {
+					indicator.classList.add('active');
+				} else {
+					indicator.classList.remove('active');
+				}
+			});
+
+			// Control video playback
+			pauseAllVideos();
+			setTimeout(() => {
+				playVideo(currentIndex);
+			}, 500); // Wait for transition to complete
+		}
+
+		function goToSlide(index) {
+			currentIndex = index;
+			updateCarousel();
+		}
+
+		function nextSlide() {
+			currentIndex = (currentIndex + 1) % items.length;
+			updateCarousel();
+		}
+
+		function prevSlide() {
+			currentIndex = (currentIndex - 1 + items.length) % items.length;
+			updateCarousel();
+		}
+
+		function startAutoPlay() {
+			if (!autoSlideInterval) {
+				autoSlideInterval = setInterval(nextSlide, 9915000); // Change slide every 8 seconds to allow videos to play
+			}
+		}
+
+		function stopAutoPlay() {
+			clearInterval(autoSlideInterval);
+			autoSlideInterval = null;
+		}
+
+		// Initialize Intersection Observer to detect when carousel is visible
+		function initObserver() {
+			observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Carousel is visible - start autoplay and play current video
+						startAutoPlay();
+						playVideo(currentIndex);
+					} else {
+						// Carousel is not visible - stop autoplay and pause all videos
+						stopAutoPlay();
+						pauseAllVideos();
+					}
+				});
+			}, { 
+				threshold: 0.3, // Trigger when 30% of carousel is visible
+				rootMargin: '0px' 
+			});
+
+			observer.observe(carousel);
+		}
+
+		// Event listeners
+		nextBtn.addEventListener('click', () => {
+			nextSlide();
+			resetAutoPlay();
+		});
+
+		prevBtn.addEventListener('click', () => {
+			prevSlide();
+			resetAutoPlay();
+		});
+
+		function resetAutoPlay() {
+			// Reset autoplay timer after manual navigation
+			stopAutoPlay();
+			// Check if carousel is still visible before restarting
+			const rect = carousel.getBoundingClientRect();
+			const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+			if (isVisible) {
+				startAutoPlay();
+			}
+		}
+
+		// Pause on hover and resume on leave
+		carousel.addEventListener('mouseenter', () => {
+			stopAutoPlay();
+			pauseAllVideos();
+		});
+		
+		carousel.addEventListener('mouseleave', () => {
+			const rect = carousel.getBoundingClientRect();
+			const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+			if (isVisible) {
+				startAutoPlay();
+				playVideo(currentIndex);
+			}
+		});
+		
+		// Initialize everything when DOM is loaded
+		document.addEventListener('DOMContentLoaded', () => {
+			initObserver();
+			// Start with first video playing if carousel is visible
+			setTimeout(() => {
+				const rect = carousel.getBoundingClientRect();
+				const isVisible = rect.top < window.innerHeight * 0.7;
+				if (isVisible) {
+					playVideo(0);
+				}
+			}, 1000); // Wait for page to fully load
+		});
+
+		// Handle page visibility changes
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden) {
+				stopAutoPlay();
+				pauseAllVideos();
+			} else {
+				const rect = carousel.getBoundingClientRect();
+				const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+				if (isVisible) {
+					startAutoPlay();
+					playVideo(currentIndex);
+				}
+			}
+		});
+	</script>
+</body>
+</html>
