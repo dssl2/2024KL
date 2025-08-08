@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mexico 2026 | ¡Viva la Fiesta!</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+/* Mexico.css - Fiesta Resort Theme */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@400;700;900&display=swap');
+
+:root {
+    /* Mexican Fiesta Color Palette */
+    --mex-red: #e63946;
+    --mex-orange: #f4a261;
+    --mex-yellow: #f1c453;
+    --mex-blue: #457b9d;
+    --mex-green: #2a9d8f;
+    --light-bg: #f8f9fa;
+    --darker-bg: #e9ecef;
+    --text-primary: #333;
+    --text-secondary: #555;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text-primary);
+    background: var(--light-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%23e63946" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+    background-size: 50px 50px;
+    padding-top: 60px;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes confetti {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Utility Classes */
+.fiesta-border {
+    border: 3px solid var(--mex-red);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.fiesta-border::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--mex-red), var(--mex-orange), var(--mex-yellow), var(--mex-green), var(--mex-blue));
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0.3;
+}
+
+.fiesta-shadow {
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Layout Components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section.dark {
+    background: var(--darker-bg);
+}
+
+.section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--mex-red);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 3px solid var(--mex-red);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    font-weight: 400;
+    color: var(--mex-red);
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--mex-red);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--mex-red);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--mex-red);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    z-index: 1001;
+    border-radius: 5px;
+}
+
+.menu-toggle:hover {
+    background: var(--mex-orange);
+}
+
+.mobile-icon {
+    display: none;
+    width: 24px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    margin: 25px 0 35px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    text-transform: uppercase;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--mex-red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--mex-orange);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--mex-red);
+    border: 2px solid var(--mex-red);
+}
+
+.btn-secondary:hover {
+    background: var(--mex-red);
+    color: white;
+}
+
+.video-container {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-item {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-item iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-btn {
+    background: rgba(230, 57, 70, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 20px;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    border-radius: 50%;
+}
+
+.carousel-btn:hover {
+    background: var(--mex-orange);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    gap: 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--mex-red);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 50%;
+}
+
+.indicator.active {
+    background: var(--mex-red);
+}
+
+/* Video Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.video-card {
+    background: white;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(230, 57, 70, 0.2);
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 220px;
+}
+
+.video-info {
+    padding: 25px;
+}
+
+.video-title {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--mex-red);
+    font-size: 1.5rem;
+}
+
+.video-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Itinerary */
+.itinerary-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    justify-content: center;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mex-red) var(--darker-bg);
+}
+
+.itinerary-tabs::-webkit-scrollbar {
+    height: 6px;
+    background-color: var(--darker-bg);
+}
+
+.itinerary-tabs::-webkit-scrollbar-thumb {
+    background-color: var(--mex-red);
+    border-radius: 3px;
+}
+
+.tab {
+    padding: 12px 25px;
+    background: white;
+    color: var(--text-secondary);
+    border: 2px solid var(--mex-red);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    border-radius: 30px;
+    text-transform: uppercase;
+}
+
+.tab.active {
+    background: var(--mex-red);
+    color: white;
+}
+
+.tab:hover:not(.active) {
+    background: rgba(230, 57, 70, 0.1);
+}
+
+.itinerary-day {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    display: none;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.itinerary-day.active {
+    display: block;
+}
+
+.day-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--mex-red);
+    margin-bottom: 25px;
+}
+
+.itinerary-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+    position: relative;
+}
+
+.item-time {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: var(--mex-orange);
+    min-width: 80px;
+    letter-spacing: 1px;
+}
+
+.item-content h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--mex-blue);
+    font-size: 1.2rem;
+}
+
+.item-description {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.item-tip {
+    background: rgba(244, 162, 97, 0.1);
+    border-left: 4px solid var(--mex-orange);
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 12px;
+    position: relative;
+    border-radius: 0 5px 5px 0;
+}
+
+.item-tip i {
+    color: var(--mex-orange);
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background: var(--mex-red);
+    padding: 60px 0 40px;
+    position: relative;
+    color: white;
+}
+
+.footer-wave {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23e63946" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23e63946" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23e63946"/></svg>');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-description {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: white;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.social-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+.footer-content h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.copyright {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+}
+
+/* Confetti Elements */
+.confetti {
+    position: fixed;
+    color: var(--mex-red);
+    font-size: 12px;
+    z-index: -1;
+    animation: confetti 5s linear infinite;
+    pointer-events: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Navigation */
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255,255,255,0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backdrop-filter: blur(10px);
+        gap: 25px;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+    
+    .mobile-icon {
+        display: inline-block;
+    }
+    
+    /* Hero Section */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Video Elements */
+    .video-container iframe {
+        height: 280px;
+    }
+    
+    .carousel-item iframe {
+        height: 300px;
+    }
+    
+    /* Carousel Controls */
+    .carousel-controls {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px;
+    }
+    
+    /* Itinerary */
+    .itinerary-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .itinerary-day {
+        padding: 25px;
+    }
+    
+    .day-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Video Grid */
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Smaller adjustments for very small screens */
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .video-container iframe,
+    .carousel-item iframe {
+        height: 200px;
+    }
+    
+    .video-card iframe {
+        height: 180px;
+    }
+    
+    .itinerary-tabs {
+        gap: 5px;
+    }
+    
+    .tab {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .itinerary-day {
+        padding: 20px 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Confetti elements -->
+    <div class="confetti" style="left:10%;animation-delay:0s;">🎉</div>
+    <div class="confetti" style="left:20%;animation-delay:1s;">🌮</div>
+    <div class="confetti" style="left:30%;animation-delay:2s;">🎊</div>
+    <div class="confetti" style="left:40%;animation-delay:3s;">🍹</div>
+    <div class="confetti" style="left:50%;animation-delay:4s;">🌵</div>
+    <div class="confetti" style="left:60%;animation-delay:5s;">🎉</div>
+    <div class="confetti" style="left:70%;animation-delay:0.5s;">🌯</div>
+    <div class="confetti" style="left:80%;animation-delay:1.5s;">🎊</div>
+    <div class="confetti" style="left:90%;animation-delay:2.5s;">🍸</div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-umbrella-beach"></i> ¡Viva México!
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#history"><i class="fas fa-landmark mobile-icon"></i><span class="nav-text">Culture</span></a></li>
+                <li><a href="#videos"><i class="fas fa-video mobile-icon"></i><span class="nav-text">Videos</span></a></li>
+                <li><a href="#itinerary"><i class="fas fa-calendar-alt mobile-icon"></i><span class="nav-text">Itinerary</span></a></li>
+                <li><a href="#resorts"><i class="fas fa-hotel mobile-icon"></i><span class="nav-text">Resorts</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="section-title pulse">¡Bienvenidos a México!</h1>
+                    <p class="hero-subtitle">
+                        From the golden beaches of Cancún to the vibrant streets of Mexico City, 
+                        experience the perfect blend of rich culture, breathtaking landscapes, 
+                        and world-class resorts. ¡Viva la fiesta!
+                    </p>
+                    <div class="cta-buttons">
+                        <a class="btn btn-primary" href="#itinerary">
+                            <i class="fas fa-calendar"></i> Plan Your Trip
+                        </a>
+                        <a class="btn btn-secondary" href="#resorts">
+                            <i class="fas fa-hotel"></i> Explore Resorts
+                        </a>
+                    </div>
+                </div>
+                <div class="video-container fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/7UPHX45m9Xk" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section dark" id="resorts">
+        <div class="container">
+            <h2 class="section-title">Luxury Resorts</h2>
+            <p class="hero-subtitle">Experience Mexico's world-famous hospitality at these stunning resorts</p>
+            <div class="carousel fiesta-border">
+                <div class="carousel-inner" id="carouselInner">
+                    <div class="carousel-item">
+                        <iframe allowfullscreen="" src="https://player.vimeo.com/video/1105605849?autoplay=1&amp;loop=1" loading="lazy"></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <iframe allowfullscreen="" src="https://www.youtube.com/embed/180XDZAU9Ug" loading="lazy"></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <iframe allowfullscreen="" src="https://www.youtube.com/embed/UpQigXbDdsU" loading="lazy"></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <iframe allowfullscreen="" src="https://player.vimeo.com/video/67471309?autoplay=0&amp;loop=1" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="nextBtn" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mexico Experience Section -->
+    <section class="section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="section-title">Mexican Fiesta</h2>
+                    <p class="hero-subtitle">
+                        From the mariachi music of Guadalajara to the Day of the Dead celebrations 
+                        in Oaxaca, Mexico is a country that knows how to throw a party. Experience 
+                        the vibrant colors, delicious cuisine, and warm hospitality that make 
+                        Mexico one of the world's most beloved destinations.
+                    </p>
+                    <div class="cta-buttons">
+                        <a class="btn btn-primary" href="#itinerary">
+                            <i class="fas fa-route"></i> Explore More
+                        </a>
+                        <a class="btn btn-secondary" href="#videos">
+                            <i class="fas fa-play"></i> Watch Videos
+                        </a>
+                    </div>
+                </div>
+                <div class="video-container fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/3F1O3WodqYI" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section dark" id="history">
+        <div class="container">
+            <h2 class="section-title">Rich Culture</h2>
+            <p class="section-subtitle">Discover Mexico's fascinating history and traditions</p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p>Mexico's history stretches back thousands of years, from the ancient 
+                    civilizations of the Maya and Aztecs to the Spanish colonial era and modern 
+                    independence. This rich heritage is visible everywhere, from the pyramids 
+                    of Teotihuacán to the baroque churches of Puebla.</p>
+                    
+                    <p>Mexican culture is a vibrant blend of indigenous and European influences, 
+                    creating unique traditions in music, art, food, and celebration. The mariachi 
+                    music of Jalisco, the folkloric ballet of Amalia Hernández, and the murals 
+                    of Diego Rivera all showcase this cultural richness.</p>
+                    
+                    <p>From the pre-Hispanic ruins to the cosmopolitan cities, Mexico offers 
+                    a diverse range of experiences that reflect its complex history and 
+                    vibrant present.</p>
+                </div>
+                <div class="video-container fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/0qG7KbwT9h4" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="section" id="videos">
+        <div class="container">
+            <h2 class="section-title">Mexico Videos</h2>
+            <p class="section-subtitle">Experience Mexico's beauty through these stunning videos</p>
+            <div class="video-grid">
+                <div class="video-card fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/8bLwJyUJgQY" loading="lazy"></iframe>
+                    <div class="video-info">
+                        <h3 class="video-title">Cancún Resorts</h3>
+                        <p class="video-description">Explore Mexico's most luxurious beachfront resorts in Cancún.</p>
+                    </div>
+                </div>
+                <div class="video-card fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/1ZQpHqXkY8M" loading="lazy"></iframe>
+                    <div class="video-info">
+                        <h3 class="video-title">Mexican Cuisine</h3>
+                        <p class="video-description">Discover the flavors of authentic Mexican food from tacos to mole.</p>
+                    </div>
+                </div>
+                <div class="video-card fiesta-border">
+                    <iframe allowfullscreen="" src="https://www.youtube.com/embed/9ZKB2wG6u1w" loading="lazy"></iframe>
+                    <div class="video-info">
+                        <h3 class="video-title">Ancient Ruins</h3>
+                        <p class="video-description">Tour the spectacular Mayan ruins at Chichén Itzá and Tulum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="section dark" id="itinerary">
+        <div class="container">
+            <h2 class="section-title">7-Day Mexican Fiesta</h2>
+            <p class="section-subtitle">The perfect introduction to Mexico's diverse experiences</p>
+            
+            <div class="itinerary-tabs">
+                <div class="tab active" data-day="day1">Day 1: Arrival</div>
+                <div class="tab" data-day="day2">Day 2: Beach Day</div>
+                <div class="tab" data-day="day3">Day 3: Culture</div>
+                <div class="tab" data-day="day4">Day 4: Adventure</div>
+                <div class="tab" data-day="day5">Day 5: Relaxation</div>
+                <div class="tab" data-day="day6">Day 6: Exploration</div>
+                <div class="tab" data-day="day7">Day 7: Departure</div>
+            </div>
+
+            <!-- Day 1 Content -->
+            <div class="active itinerary-day fiesta-border" id="day1">
+                <h3 class="day-title">Day 1: Arrival in Paradise</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4>Arrival in Cancún</h4>
+                        <p class="item-description">
+                            Arrive at Cancún International Airport (CUN) and transfer to your luxury resort. 
+                            Check in and take time to relax after your flight.
+                        </p>
+                        <div class="item-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Consider booking a spa treatment to unwind after your journey</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Evening</div>
+                    <div class="item-content">
+                        <h4>Welcome Dinner</h4>
+                        <p class="item-description">
+                            Enjoy a gourmet Mexican welcome dinner at your resort's finest restaurant, 
+                            featuring local specialties and live mariachi music.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 Content -->
+            <div class="itinerary-day fiesta-border" id="day2">
+                <h3 class="day-title">Day 2: Beach & Relaxation</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Beachfront Breakfast</h4>
+                        <p class="item-description">Enjoy a delicious breakfast with ocean views at your resort's beachfront restaurant.</p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Midday</div>
+                    <div class="item-content">
+                        <h4>Beach Day</h4>
+                        <p class="item-description">Spend the day relaxing on the pristine white sand beaches of the Riviera Maya. Enjoy swimming in the turquoise waters or try water sports like paddleboarding or kayaking.</p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Evening</div>
+                    <div class="item-content">
+                        <h4>Sunset Cocktails</h4>
+                        <p class="item-description">Sip margaritas while watching the spectacular Caribbean sunset from your resort's beach bar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 Content -->
+            <div class="itinerary-day fiesta-border" id="day3">
+                <h3 class="day-title">Day 3: Cultural Experience</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Tulum Ruins Tour</h4>
+                        <p class="item-description">
+                            Visit the spectacular Mayan ruins of Tulum, perched on cliffs overlooking 
+                            the Caribbean Sea. Learn about Mayan history and culture from your expert guide.
+                        </p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4>Cenote Swim & Lunch</h4>
+                        <p class="item-description">
+                            Cool off with a swim in a sacred cenote (natural sinkhole), then enjoy 
+                            a traditional Yucatecan lunch at a local restaurant.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 Content -->
+            <div class="itinerary-day fiesta-border" id="day4">
+                <h3 class="day-title">Day 4: Adventure Day</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Xcaret Park</h4>
+                        <p class="item-description">
+                            Spend the day at Xcaret eco-archaeological park, where you can snorkel 
+                            in underground rivers, see wildlife, and learn about Mexican culture.
+                        </p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Evening</div>
+                    <div class="item-content">
+                        <h4>Xcaret México Espectacular</h4>
+                        <p class="item-description">
+                            Experience this spectacular night show that takes you on a journey 
+                            through Mexico's history with music, dance, and colorful costumes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 Content -->
+            <div class="itinerary-day fiesta-border" id="day5">
+                <h3 class="day-title">Day 5: Resort Relaxation</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Spa Day</h4>
+                        <p class="item-description">
+                            Indulge in a luxurious spa treatment at your resort, perhaps trying 
+                            a traditional temazcal (Mayan sweat lodge) experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4>Poolside Relaxation</h4>
+                        <p class="item-description">
+                            Lounge by the resort's infinity pool with a good book and refreshing 
+                            cocktails served to your cabana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 Content -->
+            <div class="itinerary-day fiesta-border" id="day6">
+                <h3 class="day-title">Day 6: Island Exploration</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Isla Mujeres Catamaran Tour</h4>
+                        <p class="item-description">
+                            Sail to the beautiful Isla Mujeres on a luxury catamaran. Enjoy snorkeling 
+                            in the crystal-clear waters and time to explore the charming island.
+                        </p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Evening</div>
+                    <div class="item-content">
+                        <h4>Farewell Fiesta</h4>
+                        <p class="item-description">
+                            Celebrate your last night in Mexico with a festive beach party featuring 
+                            live music, folkloric dancers, and a gourmet buffet of Mexican specialties.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7 Content -->
+            <div class="itinerary-day fiesta-border" id="day7">
+                <h3 class="day-title">Day 7: Departure</h3>
+                <div class="itinerary-item">
+                    <div class="item-time">Morning</div>
+                    <div class="item-content">
+                        <h4>Final Relaxation</h4>
+                        <p class="item-description">
+                            Enjoy your final morning in Mexico with a leisurely breakfast and 
+                            some last-minute beach time before your transfer to the airport.
+                        </p>
+                    </div>
+                </div>
+                <div class="itinerary-item">
+                    <div class="item-time">Afternoon</div>
+                    <div class="item-content">
+                        <h4>Airport Transfer</h4>
+                        <p class="item-description">
+                            Transfer to Cancún International Airport for your departure flight, 
+                            taking with you unforgettable memories of Mexico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wave"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-umbrella-beach"></i> ¡Viva México!
+                    </div>
+                    <p class="footer-description">Your guide to Mexico's best beaches, resorts, and cultural experiences. ¡Que vivan las vacaciones!</p>
+                    <div class="social-links">
+                        <a class="social-link" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="social-link" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-link" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cancún</a></li>
+                        <li><a href="#">Riviera Maya</a></li>
+                        <li><a href="#">Los Cabos</a></li>
+                        <li><a href="#">Puerto Vallarta</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>More Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Best Time to Visit</a></li>
+                        <li><a href="#">Travel Tips</a></li>
+                        <li><a href="#">Mexican Cuisine</a></li>
+                        <li><a href="#">Cultural Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2023 Mexico Travel Guide. All rights reserved. ¡Viva México!
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        if (menuToggle && navLinks && menuIcon) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+                
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+        }
+
+        // Tab functionality for itinerary
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and days
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.itinerary-day').forEach(d => d.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding day content
+                const dayId = this.getAttribute('data-day');
+                const dayContent = document.getElementById(dayId);
+                if (dayContent) {
+                    dayContent.classList.add('active');
+                }
+                
+                // Smooth scroll for tabs on mobile
+                if (window.innerWidth <= 768) {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            });
+        });
+
+        // Carousel functionality
+        const carouselInner = document.getElementById('carouselInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicatorsContainer = document.getElementById('indicators');
+        const items = document.querySelectorAll('.carousel-item');
+        
+        if (!carouselInner || !items.length) return;
+        
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        // Create indicators if container exists
+        if (indicatorsContainer) {
+            items.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateCarousel() {
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            if (indicators.length) {
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-play carousel
+        autoPlayInterval = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        carouselInner.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        carouselInner.addEventListener('mouseleave', () => autoPlayInterval = setInterval(nextSlide, 5000));
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carouselInner.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(autoPlayInterval);
+        }, {passive: true});
+        
+        carouselInner.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }, {passive: true});
+
+        function handleSwipe() {
+            const threshold = 50; // Minimum swipe distance
+            if (touchStartX - touchEndX > threshold) {
+                nextSlide(); // Swipe left
+            } else if (touchEndX - touchStartX > threshold) {
+                prevSlide(); // Swipe right
+            }
+        }
+
+        // Create more confetti elements
+        function createConfetti() {
+            const icons = ['🌮', '🍹', '🎉', '🎊', '🌵', '🌶️', '🏖️', '🍸'];
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'fixed';
+            confettiContainer.style.top = '0';
+            confettiContainer.style.left = '0';
+            confettiContainer.style.width = '100%';
+            confettiContainer.style.height = '100%';
+            confettiContainer.style.pointerEvents = 'none';
+            confettiContainer.style.zIndex = '-1';
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.textContent = icons[Math.floor(Math.random() * icons.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confetti.style.animationDuration = `${3 + Math.random() * 5}s`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        createConfetti();
+    });
+    </script>
+</body>
+</html>
