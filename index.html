@@ -20,6 +20,7 @@
             text-align: center;
             border-bottom: 2px solid #444;
             padding-bottom: 10px;
+            margin-top: 0;
         }
         
         .story {
@@ -33,14 +34,14 @@
         .choices {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
         
         .choice {
             background-color: #333;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -48,6 +49,7 @@
             font-weight: bold;
             flex: 1;
             min-width: 120px;
+            font-size: 16px;
         }
         
         .choice:hover {
@@ -78,14 +80,16 @@
         
         .restart-btn {
             display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
+            margin: 20px auto 0;
+            padding: 12px 24px;
             background-color: #ff5555;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
         
         .restart-btn:hover {
@@ -99,6 +103,7 @@
             margin-bottom: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
         
         .destination-card:hover {
@@ -112,9 +117,42 @@
             gap: 20px;
         }
 
+        .rejected {
+            position: relative;
+            opacity: 0.6;
+        }
+
+        .rejected::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ff5555;
+            transform: rotate(-5deg);
+            transform-origin: center;
+        }
+
+        .scolding {
+            color: #ff5555;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 85, 85, 0.1);
+            border-left: 3px solid #ff5555;
+        }
+
         @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
             .destination-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .choices {
@@ -124,6 +162,15 @@
             
             .choice {
                 width: 100%;
+                padding: 15px;
+            }
+            
+            .story {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
             }
         }
     </style>
@@ -135,25 +182,25 @@
         <p>You stand before a mysterious travel terminal with four glowing portals. Each leads to a vastly different destination, promising unique adventures. The air hums with energy as you must make your choice...</p>
         
         <div class="destination-grid">
-            <div class="destination-card" onclick="chooseAdventure('chongqing')">
+            <div id="card-chongqing" class="destination-card" onclick="chooseAdventure('chongqing')">
                 <img class="destination-img" src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4no3wSY9WpDxBrlajBEZiJpnPOpEbPTGnrhNAhIL77Vs0NWu5ogtQt3l-Wk4fXZkwLR4RsMpg5KspOVxxgvQAmHEsiJVQ-V7WXfVsH3fVkReFAOuR2glfQp2WDVJc4rSmk6nheOhCTU3QjH8=w540-h312-n-k-no" alt="Cyberpunk Chongqing">
                 <h3>Cyberpunk Chongqing</h3>
                 <p>Neon-lit megacity of the future</p>
             </div>
             
-            <div class="destination-card" onclick="chooseAdventure('bali')">
+            <div id="card-bali" class="destination-card" onclick="chooseAdventure('bali')">
                 <img class="destination-img" src="https://media.digitalnomads.world/wp-content/uploads/2021/01/20120709/bali-for-digital-nomads.jpg" alt="Paradise Bali">
                 <h3>Paradise Bali</h3>
                 <p>Tropical island of peace and beauty</p>
             </div>
             
-            <div class="destination-card" onclick="chooseAdventure('mexico')">
+            <div id="card-mexico" class="destination-card" onclick="chooseAdventure('mexico')">
                 <img class="destination-img" src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSkQYlL0H_dd3I8H2r8DStYVlZZZBRTRiFkx9pEUn-NIrFXrhvXBkAM8Y9FY51JhzuReppXSfUadMfTk-eNFgbRW7DWeplqxNUBDEQQUTk" alt="Fiesta Mexico">
                 <h3>Fiesta Mexico</h3>
                 <p>Vibrant land of color and celebration</p>
             </div>
             
-            <div class="destination-card" onclick="chooseAdventure('saigon')">
+            <div id="card-saigon" class="destination-card" onclick="chooseAdventure('saigon')">
                 <img class="destination-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ho_Chi_Minh_City_panorama_2019_%28cropped2%29.jpg/1280px-Ho_Chi_Minh_City_panorama_2019_%28cropped2%29.jpg" alt="Historic Saigon">
                 <h3>Historic Saigon</h3>
                 <p>Where past and present collide</p>
@@ -168,10 +215,10 @@
         <p>The shimmering gateway reveals glimpses of towering megastructures, their surfaces alive with pulsating holograms advertising synthetic noodles and neural upgrades. The constant hum of drones forms a mechanical symphony.</p>
         
         <div class="choices">
-            <div class="choice go" onclick="goToAdventure('chongqing')">
+            <div class="choice go" onclick="window.location.href='https://boiz.netlify.app/Chongqing2026'">
                 Enter the Neon City
             </div>
-            <div class="choice dont-go" onclick="dontGoAdventure('chongqing')">
+            <div class="choice dont-go" onclick="rejectAdventure('chongqing', 'Cyberpunk Chongqing')">
                 Stay in Safety
             </div>
         </div>
@@ -184,10 +231,10 @@
         <p>A gentle voice whispers: "The island calls to your spirit. Will you answer?"</p>
         
         <div class="choices">
-            <div class="choice go" onclick="goToAdventure('bali')">
+            <div class="choice go" onclick="window.location.href='https://boiz.netlify.app/bali2026'">
                 Embrace Paradise
             </div>
-            <div class="choice dont-go" onclick="dontGoAdventure('bali')">
+            <div class="choice dont-go" onclick="rejectAdventure('bali', 'Paradise Bali')">
                 Decline the Journey
             </div>
         </div>
@@ -200,10 +247,10 @@
         <p>A voice calls out: "Amigo! The fiesta awaits! Will you join the celebration of life?"</p>
         
         <div class="choices">
-            <div class="choice go" onclick="goToAdventure('mexico')">
+            <div class="choice go" onclick="window.location.href='https://boiz.netlify.app/mexico2026'">
                 Join the Fiesta
             </div>
-            <div class="choice dont-go" onclick="dontGoAdventure('mexico')">
+            <div class="choice dont-go" onclick="rejectAdventure('mexico', 'Fiesta Mexico')">
                 Miss the Party
             </div>
         </div>
@@ -216,43 +263,13 @@
         <p>An old cyclo driver nods at you: "Many stories here. Some happy, some sad. All true. You want to hear?"</p>
         
         <div class="choices">
-            <div class="choice go" onclick="goToAdventure('saigon')">
+            <div class="choice go" onclick="window.location.href='https://boiz.netlify.app/saigon2026'">
                 Discover the Stories
             </div>
-            <div class="choice dont-go" onclick="dontGoAdventure('saigon')">
+            <div class="choice dont-go" onclick="rejectAdventure('saigon', 'Historic Saigon')">
                 Turn Away
             </div>
         </div>
-    </div>
-    
-    <!-- Go To Adventure Endings -->
-    <div id="go-chongqing" class="story hidden">
-        <h2>Welcome to Future City</h2>
-        <p>As you step through the portal, your senses are overwhelmed by the neon glow of Chongqing's towering megastructures. Augmented reality ads whisper directly into your consciousness as you navigate streets where traditional hot pot restaurants sit beside neural upgrade clinics.</p>
-        <p>A shadowy figure emerges from an alley, their face obscured by a glowing visor. "You've got the look of someone who wants to see the real city," they say, extending a cybernetic hand. "Come, I'll show you what the tourists never see..."</p>
-        <p>Your adventure in the cyberpunk metropolis begins!</p>
-        <button class="restart-btn" onclick="window.location.href='https://boiz.netlify.app/Chongqing2026'">Learn More About Chongqing</button>
-    </div>
-    
-    <div id="go-bali" class="story hidden">
-        <h2>Island Paradise Found</h2>
-        <p>The warm sand greets your toes as you arrive on Bali's shores. Emerald rice terraces stretch to the horizon, while the scent of frangipani and clove smoke from temple offerings fills the air. A local woman places a flower behind your ear with a smile.</p>
-        <p>"You have come at the right time," she says. "Tonight is the full moon ceremony at Pura Luhur. The gods will bless you." As gamelan music drifts on the breeze, you realize this is just the beginning of your Balinese awakening.</p>
-        <button class="restart-btn" onclick="window.location.href='https://boiz.netlify.app/bali2026'">Learn More About Bali</button>
-    </div>
-    
-    <div id="go-mexico" class="story hidden">
-        <h2>¡Bienvenido a México!</h2>
-        <p>The explosion of color and sound overwhelms your senses as you join the fiesta. Mariachi bands play while dancers in elaborate skull makeup whirl through the streets. An abuelo hands you a steaming tamal wrapped in corn husks.</p>
-        <p>"For you, mi amigo," he says with a twinkle in his eye. "Eat, dance, live! Tonight we celebrate Día de los Muertos, and the ancestors walk among us!" As fireworks burst overhead, you realize this celebration will change you forever.</p>
-        <button class="restart-btn" onclick="window.location.href='https://boiz.netlify.app/mexico2026'">Learn More About Mexico</button>
-    </div>
-    
-    <div id="go-saigon" class="story hidden">
-        <h2>Saigon Stories Begin</h2>
-        <p>The humid energy of Ho Chi Minh City envelops you as motorbikes swarm like schools of fish around French colonial buildings. A woman in áo dài balances a pole across her shoulders, baskets brimming with dragon fruit and rambutan.</p>
-        <p>Your cyclo driver grins: "First time Saigon? I show you real city - best phở, hidden cafes, maybe underground jazz club where ghosts of American soldiers still dance?" As the city's pulse synchronizes with your heartbeat, you know every corner holds a story waiting to be discovered.</p>
-        <button class="restart-btn" onclick="window.location.href='https://boiz.netlify.app/saigon2026'">Learn More About Saigon</button>
     </div>
     
     <!-- Don't Go Endings -->
@@ -260,7 +277,7 @@
         <h2>Opportunity Lost</h2>
         <p>You step back from the neon portal, shaking your head. As the gateway fades, a nearby street vendor scoffs: "Ha! Another tourist too scared to see real future!"</p>
         <p>Days later, news reports show Chongqing's spectacular Moon Festival - millions of drones creating breathtaking displays in the night sky. Your friends who went return with incredible stories of underground tech markets and rooftop tea houses overlooking the city of tomorrow.</p>
-        <p>You'll never know what adventures awaited in those neon canyons...</p>
+        <div class="scolding">"Coward! The future isn't for the faint of heart!"</div>
         <button class="restart-btn" onclick="restart()">Choose Another Adventure</button>
     </div>
     
@@ -268,7 +285,7 @@
         <h2>Paradise Denied</h2>
         <p>You turn away from the tropical glow. The portal vanishes with a sound like a sighing wave. A travel agent nearby shakes their head: "Bali? I went last year. Changed my life. But I guess some people prefer staying in their comfort zones."</p>
         <p>Months later, you meet a friend who visited Ubud. Their photos of jungle waterfalls and spiritual ceremonies at dawn make your heart ache. They speak of Balinese healers who solved chronic pain Western doctors couldn't touch.</p>
-        <p>The island of gods called to you... and you said no.</p>
+        <div class="scolding">"Your loss! The island gods won't call twice!"</div>
         <button class="restart-btn" onclick="restart()">Choose Another Adventure</button>
     </div>
     
@@ -276,7 +293,7 @@
         <h2>Fiesta Missed</h2>
         <p>You wave away the vibrant portal. The mariachi music cuts off abruptly. An old man at a nearby bench chuckles: "Ay, gringo... you don't know what you just turned down. My village has fiesta tonight - best mole in Oaxaca, and my granddaughter's quinceañera!"</p>
         <p>Later, you see social media posts from acquaintances who went - photos of them learning to make tortillas by hand, swimming in cenotes, dancing until sunrise. Their joy is palpable even through the screen.</p>
-        <p>The warmth of Mexico could have been yours...</p>
+        <div class="scolding">"¡Qué lástima! You'll never know true fiesta now!"</div>
         <button class="restart-btn" onclick="restart()">Choose Another Adventure</button>
     </div>
     
@@ -284,7 +301,7 @@
         <h2>Stories Untold</h2>
         <p>You shake your head at the cyclo driver. The portal flickers out like a dying motorbike engine. An elderly woman selling lotus flowers tuts: "My nephew came back from Saigon last week. Found his father's diary from the war... finally understood our family."</p>
         <p>Years later, you read a novel set in Ho Chi Minh City - the descriptions of morning phở vendors and hidden courtyard cafes are so vivid you can almost taste the fish sauce. The author thanks the city for inspiring their best work.</p>
-        <p>Saigon's stories will continue without you...</p>
+        <div class="scolding">"Foolish! The city's stories deserved to be heard!"</div>
         <button class="restart-btn" onclick="restart()">Choose Another Adventure</button>
     </div>
     
@@ -292,20 +309,22 @@
         function chooseAdventure(destination) {
             document.getElementById('intro').classList.add('hidden');
             document.getElementById(destination).classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
         
-        function goToAdventure(destination) {
-            // Hide current story
-            document.getElementById(destination).classList.add('hidden');
-            // Show go ending
-            document.getElementById(`go-${destination}`).classList.remove('hidden');
-        }
-        
-        function dontGoAdventure(destination) {
+        function rejectAdventure(destination, name) {
             // Hide current story
             document.getElementById(destination).classList.add('hidden');
             // Show don't go ending
             document.getElementById(`dont-${destination}`).classList.remove('hidden');
+            // Cross out the city card
+            const card = document.getElementById(`card-${destination}`);
+            card.classList.add('rejected');
+            // Remove click handler
+            card.onclick = null;
+            // Add rejection text
+            card.innerHTML += `<div class="scolding">REJECTED: ${name}</div>`;
+            window.scrollTo(0, 0);
         }
         
         function restart() {
@@ -317,6 +336,7 @@
             
             // Show intro
             document.getElementById('intro').classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
